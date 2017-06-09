@@ -1,0 +1,33 @@
+/* Extended*/
+.nav-tabs > li > a, .nav-pills > li > a {font-size: 12px;}
+.page-bar-color3 {
+background-color:rgb(46, 137, 198) !important
+}
+/*Page*/
+.road-map-container{min-height:410px}
+.road-map-container .road-map-left{height:600px; overflow-y: auto;padding-left:0px;}
+.road-map-container .road-map-left .province-item{cursor:pointer;}
+.road-map-container .road-map-right{height:600px;padding:0px;border-left:0.1em solid #999}
+.road-map-container .road-map-right .roadmap-map{width:100%;height:100%;position:absolute;right:0px;border-left:solid 0.1em #999;}
+.road-map-container .road-map-right .roadmap-details{display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width:0px;}
+.road-map-container .road-map-right .roadmap-details .attr-close{    
+    color: #ee0566;
+    font-size: 22px;
+    position: absolute;
+    right: 2px;
+    top: 6px;}
+#roadmap{width:100%;height:100%}
+
+.location-list{padding-left:12px;list-style: none;}
+.location-list .tree-branch{color:#1e65a2}
+.location-list .toggle-ctrl{cursor:pointer;font-size:11px;}
+.location-list .toggle-list{}
+.location-list .road-location-list{}
+.location-list .road-information-list{}
+.regionprovince-list{font-size:12px;padding-left: 8px;}
+
+.clear-search{ cursor: pointer;font-size: 20px;position: absolute;right: 12px;top: 17px;}
