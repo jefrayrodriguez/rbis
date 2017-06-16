@@ -163,7 +163,7 @@
             <div class="col-md-7 no-padding content-data-attr">        
                     <div ng-if="currentModel.name =='road'" ng-include="'roadmain'"></div>                    
                     <div  ng-if="currentModel.name!='road' && currentModel.list.length>0" ng-include="'roadattributesList'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null" ng-include="'roadattributesItem'"></div>                    
+                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCarriageway'" ng-include="'template_RoadCarriageway'"></div>                    
            </div>
            <div class="col-md-5 no-padding">
                 <div id="roadmap"> </div>

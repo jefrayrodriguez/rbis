@@ -345,6 +345,28 @@ PlaceNames
             }
     }
 
+   utilities.roads.displayattributestable=  function(n,o,maxheight,datamodel){    
+            n="Road" + n;
+            var table = "<div style='max-height:" +  (maxheight || 400) +"px;overflow-y:auto;overflow-x:hidden;'><table class='table'>";
+            var _model =!datamodel.structure[n]?datamodel.structure["Road"]:datamodel.structure[n];
+            var _getvalue = function(model,o){
+                if(model.ctrl="select" && model.options.length>0){
+                            var idx  = model.options.map(function(d){return d.key}).indexOf(o[model.key]);
+                            return idx>-1?model.options[idx]:"";
+                }else{
+                    return o[model.key] || "";
+                };
+            };
+
+            var m = _model;
+                for(var n in m){
+                    model = m[n];
+                        table+="<tr><td>"  + model.label + "</td><td>" + _getvalue(model,o) + "</td>"
+                }
+             
+            table+="</table></div>"
+            return table;
+    }; 
 
    utilities.roads.displayattr =  function(attr,maxheight){
     var table = "<div style='max-height:" +  (maxheight || 400) +"px;overflow-y:auto;overflow-x:hidden;'><table class='table'>";
