@@ -135,9 +135,6 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
     };
 
 
-    $scope.displayattributestable =  function(){        
-        return tooltiptext = utilities.roads.displayattr($scope.currentAttr) || "";
-    }
 
     /** Events */	
 
@@ -340,13 +337,17 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
 
                 $("#roadattrttable").html("");
                 var hh = $(".page-content").innerHeight();
-                $("#roadattrttable").html(utilities.roads.displayattr(o,hh - 100));                        
+                console.log(name);
+                console.log(o); 
+                //$("#roadattrttable").html(utilities.roads.displayattr(o,hh - 100));                        
+                $("#roadattrttable").html(datamodel.utils.displayattributestable(name,o.attr || o,hh-100));
             }
         }
 
-        if(o.R_NAME && !o.attr){
+        
+        if(o.R_NAME && !o.attr){                
                 $scope.getroadattrs(o,function(d){
-                        console.log(d);
+                        //console.log(d);
                         draw_geo(d,d.R_NAME);
                 });
         }else{

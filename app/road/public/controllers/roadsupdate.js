@@ -50,7 +50,7 @@ $scope.init =  function(){
     $timeout(function(){
             $http.get("/api/roads/getroadshortattrinfo?rid=" + $stateParams.id).success(function(road){
                     $scope.road = road;       
-                    $scope.loadAttrAsOptions("RoadLocRefPoints","RoadCarriageway");              
+                    $scope.loadAttrAsOptions("RoadLocRefPoints",["RoadCarriageway",]);              
                     $scope.loadRoadMainData();
             });
             $("#roadmap").leafletMaps();
@@ -62,14 +62,19 @@ $scope.loadRoadMainData =  function(){
 
 $scope.loadAttrAsOptions =  function(attr,toattr,cb){
         $http.get("/api/roads/getroadattr?rid=" + $scope.road.R_ID + "&attr=" + attr).success(function(data){
-            if(toattr=="RoadCarriageway"){
-                    datamodel.structure[toattr]["LRPStartKm"].options = [];                                            
-                    datamodel.structure[toattr]["LRPEndKmPo"].options = [];
-                    data.forEach(function(d){                            
-                            datamodel.structure[toattr]["LRPStartKm"].options.push({key:d.KMPostNo,label:d.KMPostNo});
-                            datamodel.structure[toattr]["LRPEndKmPo"].options.push({key:d.KMPostNo,label:d.KMPostNo});                            
-                    });                                                                                     
-            }
+           // if(toattr=="RoadCarriageway"){
+                for(var n in datamodel.structure){
+                    if(n!="road" || n!="RoadLocRefPoints"){
+                        datamodel.structure[toattr]["LRPStartKm"].options = [];                                            
+                        datamodel.structure[toattr]["LRPEndKmPo"].options = [];
+                        data.forEach(function(d){                            
+                                datamodel.structure[toattr]["LRPStartKm"].options.push({key:d.KMPostNo,label:d.KMPostNo});
+                                datamodel.structure[toattr]["LRPEndKmPo"].options.push({key:d.KMPostNo,label:d.KMPostNo});                            
+                        });      
+                    }
+                }
+                                                                                                   
+            //}
             
             if(cb) cb(data);                                                 
         }); 
@@ -101,7 +106,8 @@ $scope.initModelData =  function(key,currentItem,list){
     $scope.currentModel.struct =  datamodel.structure[key];
     $scope.currentModel.list = list;
     $scope.currentModel.currentItem = currentItem;
-
+    
+    
     // breadcrums for the road/attr/features
     $scope.currentModel.page_attr_select = [];
     if(key!="road"){

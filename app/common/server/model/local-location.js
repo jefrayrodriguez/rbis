@@ -71,7 +71,8 @@ RegionsSchema.statics.getregionprovince =  function(cb){
                         province.find({RegionCode:region.Code}).exec(function(err2,provs){
                             if(err2) return cb(err2,null);   
                             provs = JSON.parse(JSON.stringify(provs));
-                            r.provinces.push.apply( r.provinces, provs );                            
+                            r.provinces.push.apply( r.provinces, provs ); 
+                                                       
                             if(roads.length>0){                                
                                 roads.forEach(function(road){
                                     var pIdx = r.provinces.map(function(d){return d.Code}).indexOf(road._id);                                    
