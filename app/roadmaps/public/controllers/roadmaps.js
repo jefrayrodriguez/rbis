@@ -41,7 +41,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
                 $scope.onmapselect(-1);
 
         });
-        $http.get("/api/location/getregionprovince").then(function(data){
+        $http.get("/api/location/getregionprovince").success(function(data){
                 $scope.regionprovince = data;
                 utilities.sort($scope.regionprovince,"Code");
         });        
@@ -56,7 +56,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
 
     $scope.loadprovince = function(a){                
         if(!a.municipalities){
-            $http.get("/api/location/getmunicity?code=" + a.Code).then(function(data){
+            $http.get("/api/location/getmunicity?code=" + a.Code).success(function(data){
                 a.municipalities = [];
                 a.municipalities.push.apply(a.municipalities,data);
                 utilities.sort(a.municipalities,"Name");
@@ -67,7 +67,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
 
     $scope.getprovroadshortinfo =  function(a){        
         if(!a.roads){
-            $http.get("/api/roads/getprovroadshortinfo?code=" + a.Code).then(function(data){
+            $http.get("/api/roads/getprovroadshortinfo?code=" + a.Code).success(function(data){
                 a.roads = [];
                 a.roads.push.apply(a.roads,data);
                 utilities.sort(a.roads,"R_NAME");
@@ -77,7 +77,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
     
     $scope.getcitymunroadshortinfo =  function(a){
         if(!a.roads){
-            $http.get("/api/roads/getcitymunroadshortinfo?code=" + a.Code).then(function(data){
+            $http.get("/api/roads/getcitymunroadshortinfo?code=" + a.Code).success(function(data){
                 a.roads = [];
                 a.roads.push.apply(a.roads,data);
                 utilities.sort(a.roads,"R_NAME");
@@ -88,7 +88,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
     $scope.getroadattrs =  function(a,cb){        
         var id = a.R_ID || a._id.R_ID;        
         if(!a.attr){
-                    $http.get("/api/roads/getroadattrinfo?rid=" + id).then(function(data){
+                    $http.get("/api/roads/getroadattrinfo?rid=" + id).success(function(data){
                         a.attr = {}
                         a.geometry = data.geometry;
                         a.attr = utilities.road.toattr(data);     
@@ -121,7 +121,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
 
 
     $scope.getroads = function(qry,cb){
-        $http.get("/api/roads/getroadaggmain" + qry).then(function(data){
+        $http.get("/api/roads/getroadaggmain" + qry).success(function(data){
                 cb(data);
         });
     }   
