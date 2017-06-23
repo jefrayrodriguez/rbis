@@ -115,7 +115,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
                                                     fillOpacity: 0.7
                                                 }											
                                             }
-                            }
+                            };
                 };
         };
 

@@ -48,8 +48,8 @@ $scope.loadattrsFeaturesdata =  function(key,data){
 
 $scope.init =  function(){
     $timeout(function(){
-            $http.get("/api/roads/getroadshortattrinfo?rid=" + $stateParams.id).success(function(road){
-                    $scope.road = road;       
+            $http.get("/api/roads/getroadshortattrinfo?rid=" + $stateParams.id).success(function(data){
+                    $scope.road = data;       
                     $scope.loadAttrAsOptions("RoadLocRefPoints",["RoadCarriageway",]);              
                     $scope.loadRoadMainData();
             });
@@ -90,7 +90,7 @@ $scope.getattrdata = function(key,cb){
         $http.get("/api/roads/getroadattr?rid=" + $scope.road.R_ID + "&attr=" + key).success(function(data){
                     $scope.road[key] = data;                                        
                     $scope.initModelData(key,null,$scope.road[key]);
-                    if(cb) cb(data);                             
+                    if(cb) cb(response.data);                             
         });                        
     }else{        
         $scope.initModelData(key,null,$scope.road[key]); 

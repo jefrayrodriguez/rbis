@@ -29,4 +29,21 @@ app.get("/api/roads/getroadaggmain",(req,res)=>{
     roads.getroadaggmain(req,res);
 });
 
+app.get("/api/roads/getroadlengthtotal",(req,res)=>{
+    roads.getroadlengthtotal(req,res);
+});
+
+app.get("/api/roads/getbridgelengthtotal",(req,res)=>{
+    roads.getbridgelengthtotal(req,res);
+});
+
+app.get("/api/roads/getcarriagewayperconcount",(req,res)=>{
+    roads.getcarriagewayperconcount(req,res);
+});
+
+app.get("/api/roads/getcarriagewaypersurfacecount",(req,res)=>{
+    roads.getcarriagewaypersurfacecount(req,res);
+});
+
+
 }

@@ -118,7 +118,7 @@ angular.module('RBIS').factory('utilities', ['$window','$rootScope',function ($w
           return _ndata;
       }
 
-      utilities.sort=function(obj,field){
+      utilities.sort=function(obj,field){          
           obj.sort(function(a,b){
                     var nameA = a[field];
                     var nameB = b[field];

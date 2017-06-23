@@ -63,3 +63,53 @@ exports.getroadaggmain = (req,res)=>{
         res.status(200).json(data);
     })
 }
+
+
+exports.getroadlengthtotal = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    roads.getroadlengthtotal(function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
+exports.getbridgelengthtotal = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    roads.getbridgelengthtotal(function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
+
+exports.getcarriagewayperconcount = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    var _qry = req.query.qry || [];
+    roads.getcarriagewayperconcount(_qry,function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
+exports.getcarriagewaypersurfacelength = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    var _qry = req.query.qry || [];
+    roads.getcarriagewaypersurfacelength(_qry,function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
+exports.getcarriagewaypersurfacecount = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    var _qry = req.query.qry || [];
+    roads.getcarriagewaypersurfacecount(_qry,function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
+
+
+
+
