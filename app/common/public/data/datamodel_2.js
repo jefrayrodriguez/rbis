@@ -43,20 +43,6 @@ datamodel.options.abutmentfoundation = [{key:"SPREAD FOOTING", label:"SPREAD FOO
 datamodel.options.maximumfloodlevel = [{key:"OVERFLOWED", label:"OVERFLOWED"},{key:"AT THE GIRDER LEVEL", label:"AT THE GIRDER LEVEL"},{key:"UNDER THE GIRDER LEVEL", label:"UNDER THE GIRDER LEVEL"}]
 datamodel.options.navigationclearance = [{key:"NOT REQUIRED", label:"NOT REQUIRED"},{key:"INSUFFICIENT", label:"INSUFFICIENT"},{key:"SUFFICIENT", label:"SUFFICIENT"}]    
 datamodel.options.abutmentprotect = [{key:"GABION", label:"GABION"},{key:"GROUTED RIPRAP", label:"GROUTED RIPRAP"},{key:"NONE", label:"NONE"},{key:"OTHERS", label:"OTHERS"},{key:"UNKNOWN", label:"UNKNOWN"}]
-//added options
-datamodel.options.alternativeroute = [{"key":"Y","label":"YES"},{"key":"N","label":"NO"}];
-datamodel.options.structurerow = [{"key":"Y","label":"YES"},{"key":"N","label":"NO"}];
-datamodel.options.landuse = [{"key":"RESIDENTIAL/COMMERCIAL","label":"RESIDENTIAL/COMMERCIAL"},{"key":"AGRICULTURAL USE","label":"AGRICULTURAL USE"},{"key":"FOREST","label":"FOREST"},{"key":"WASTE LAND","label":"WASTE LAND"}];
-datamodel.options.debrisflow = [{"key":"MANY","label":"MANY"},{"key":"FEW","label":"FEW"},{"key":"NONE","label":"NONE"}];
-datamodel.options.riveralignment = [{"key":"STRAIGHT","label":"STRAIGHT"},{"key":"CURVE","label":"CURVE"}];
-//bridge condition
-datamodel.options.deck = [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
-datamodel.options.leftsidewalk = [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
-datamodel.options.rightsidewalk = [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
-datamodel.options.leftrailing = [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
-datamodel.options.rightrailing = [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
-datamodel.options.firstappslab =  [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
-datamodel.options.secondappslab = [{"key":"G","label":"Good"},{"key":"F","label":"Fair"},{"key":"B","label":"Bad"}];
 
 //Other features
 datamodel.options.ofeaturetype = [
@@ -240,27 +226,11 @@ datamodel.RoadBridges = {
             "Navigation"    :{"label":"Navigation Clearance","key":"Navigation","type":"String","options":datamodel.options.navigationclearance,"style":"","ctrl":"select","class":"form-control","visible":true,}, 
             "Constructi"    :{"label":"Construction Cost","key":"Constructi","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true,},       
             "AbtProtect"    :{"label":"Abutment Protection","key":"MaximumFlo","type":"String","options":datamodel.options.abutmentprotect,"style":"","ctrl":"select","class":"form-control","visible":true,}, 
-            "NoOfPier"      :{"label":"No. Of Pier","key":"NoOfPier","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true},       
-            "NoOfSpan"      :{"label":"No. Of Span","key":"NoOfSpan","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true},       
-            "SpanLength"    :{"label":"Span Length","key":"SpanLength","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true}, 
-            "From_"         :{"label":"From_","key":"From_","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true},  
-            "To_"           :{"label":"To_","key":"To_","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true},
-            "remarks"       : {"label":"Remarks","key":"remarks","type":"string","options":[],"visible":true,"style":"border:solid 1px red;","ctrl":"textarea","class":"form-control"},
-           //added options
-            "Terrain"            : {"label":"Terrain","key":"Terrain","type":"String","options":datamodel.options.terrain,"style":"","ctrl":"select","class":"form-control"},
-            "AlternativeRoute"   : {"label":"Alternative Route","key":"AlternativeRoute","type":"String","options":datamodel.options.alternativeroute,"style":"","ctrl":"select","class":"form-control"},
-            "StructuresROW"      : {"label":"Structures/Houses on ROW?","key":"StructuresROW","type":"String","options":datamodel.options.structurerow,"style":"","ctrl":"select","class":"form-control"},
-            "LandUse"            : {"label":"Land Use","key":"LandUse","type":"String","options":datamodel.options.landuse,"style":"","ctrl":"select","class":"form-control"},
-            "RiverAlignment"     : {"label":"River Alingment","key":"RiverAlignment","type":"String","options":datamodel.options.riveralignment,"style":"","ctrl":"select","class":"form-control"},
-            "DebrisFlow"         : {"label":"Debris Flow","key":"DebrisFlow","type":"String","options":datamodel.options.debrisflow,"style":"","ctrl":"select","class":"form-control"},
-            "Deck"               : {"label":"Deck","key":"Deck","type":"String","options":datamodel.options.deck,"style":"","ctrl":"select","class":"form-control"},
-            "LeftSideWalk"       : {"label":"Left Sidewalk","key":"LeftSideWalk","type":"String","options":datamodel.options.leftsidewalk,"style":"","ctrl":"select","class":"form-control"},
-            "RightSideWalk"      : {"label":"Right Sidewalk","key":"RightSideWalk","type":"String","options":datamodel.options.rightsidewalk,"style":"","ctrl":"select","class":"form-control"},
-            "LeftRailing"        : {"label":"Left Railing","key":"Left Railing","type":"String","options":datamodel.options.leftrailing,"style":"","ctrl":"select","class":"form-control"},
-            "RightRailing"       : {"label":"Right Railing","key":"RightRailing","type":"String","options":datamodel.options.rightrailing,"style":"","ctrl":"select","class":"form-control"},
-            "FirstAppSlab"       : {"label":"First Approach Slab","key":"FirstAppSlab","type":"String","options":datamodel.options.firstappslab,"style":"","ctrl":"select","class":"form-control"},
-            "SecondAppSlab"      : {"label":"Second Approach Slab","key":"SecondAppSlab","type":"String","options":datamodel.options.secondappslab,"style":"","ctrl":"select","class":"form-control"},
-
+            "NoOfPier"      :{"label":"No. Of Pier","key":"NoOfPier","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true,},       
+            "NoOfSpan"      :{"label":"No. Of Span","key":"NoOfSpan","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true,},       
+            "SpanLength"    :{"label":"No. Of Span","key":"SpanLength","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true,}, 
+            "From_"         :{"label":"From_","key":"From_","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true,},  
+            "To_"           :{"label":"To_","key":"To_","type":"String","options":[],"style":"","ctrl":"text","class":"form-control","visible":true,}
 }
 //Road KM Post
 datamodel.RoadLocRefPoints = {
@@ -468,7 +438,7 @@ datamodel.RoadDitches = {
     "LRPEndDisp" : {"label":"","key":"LRPEndDisp","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},    
     "TypeID"     : {"label":"Type","key":"TypeID","type":"string","options":datamodel.options.ditchestype,"visible":true,"style":"","ctrl":"select","class":"form-control"},
     "Position"   : {"label":"Position","key":"Position","type":"string","options":datamodel.options.position,"visible":true,"style":"","ctrl":"select","class":"form-control"},        
-    "Size"   :   {"label":"Size","key":"Size","type":"string","options":datamodel.options.ditchessize,"visible":true,"style":"","ctrl":"select","class":"form-control"},        
+    "Size"   :   {"label":"Position","key":"Size","type":"string","options":datamodel.options.ditchessize,"visible":true,"style":"","ctrl":"select","class":"form-control"},        
     "Cost"       : {"label":"Cost","key":"Cost","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
     "Usefullife" : {"label":"Useful Life","key":"Usefullife","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
     "Condition"  : {"label":"Condition","key":"Condition","type":"string","options":datamodel.options.roadcondition,"visible":true,"style":"","ctrl":"select","class":"form-control"},        
@@ -529,7 +499,7 @@ datamodel.utils.displayattributestable=  function(n,o,maxheight){
             var _model =!datamodel.structure[n]?datamodel.structure["road"]:datamodel.structure[n];
             var _getvalue = function(model,o){
                 if(model.ctrl="select" && model.options.length>0 && model.visible){
-                            var idx  = model.options.map(function(d){return d.key.toUpperCase}).indexOf((o[model.key] || "") .toUpperCase);
+                            var idx  = model.options.map(function(d){return d.key.toUpperCase}).indexOf((o[model.key] || "").toUpperCase);
                             return idx>-1?model.options[idx].label :"";
                 }else{
                     return o[model.key] || "";

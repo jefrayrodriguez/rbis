@@ -164,27 +164,9 @@
                     <div ng-if="currentModel.name =='road'" ng-include="'roadmain'"></div>                    
                     <div  ng-if="currentModel.name!='road' && currentModel.list.length>0" ng-include="'roadattributesList'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCarriageway'" ng-include="'template_RoadCarriageway'"></div>                    
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadBridges'" ng-include="'template_RoadBridges'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSideFriction'" ng-include="'template_RoadSideFriction'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadPlaceNames'" ng-include="'template_RoadPlaceNames'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadJunctions'" ng-include="'template_RoadJunctions'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadMedian'" ng-include="'template_RoadMedian'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadGuardrails'" ng-include="'template_RoadGuardrails'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadHazards'" ng-include="'template_RoadHazards'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadLightings'" ng-include="'template_RoadLightings'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadMarkings'" ng-include="'template_RoadMarkings'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSigns'" ng-include="'template_RoadSigns'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadShoulders'" ng-include="'template_RoadShoulders'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSideSlopes'" ng-include="'template_RoadSideSlopes'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadStructures'" ng-include="'template_RoadStructures'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSideWalks'" ng-include="'template_RoadSideWalks'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCauseways'" ng-include="'template_RoadCauseways'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCulverts'" ng-include="'template_RoadCulverts'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadDitches'" ng-include="'template_RoadDitches'"></div>
-                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSpillways'" ng-include="'template_RoadSpillways'"></div>
            </div>
            <div class="col-md-5 no-padding">
-                <div id="roadmap" style=" display: block;outline: medium none;position: relative;z-index: 0;"> </div>
+                <div id="roadmap"> </div>
            </div>        
          </div>   
         </div>      

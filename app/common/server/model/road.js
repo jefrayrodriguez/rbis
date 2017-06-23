@@ -183,7 +183,146 @@ RoadsSchema.statics.getroadaggmain =  function(qryStr,page,limit,cb){
         }
     });
     
+};
+
+
+RoadsSchema.statics.getroadlengthtotal =  function(cb){
+    this.aggregate([{$group: {_id:'',Roadlengthtotal: { $sum: '$Length' }}},
+                    {$project: {_id: 0,Roadlengthtotal: '$Roadlengthtotal'}}],cb)
+};
+
+
+RoadsSchema.statics.getbridgelengthtotal = function(cb){
+    this.aggregate([					
+					{
+                    '$project': {
+                      				_id:{'_id':'$_id'},                         			
+                        			totalbridgelength: '$RoadBridges.Length'
+                        		}       
+                	},
+                	{'$unwind':'$totalbridgelength'},
+                	{'$group':{
+                				_id:'',
+                				totalbridgelength: {$sum:'$totalbridgelength'}
+                			 }
+                	},
+                		{'$project':{
+                		_id:0,
+                		totalbridgelength: '$totalbridgelength'
+                		}
+                	}	
+                ],cb)
 }
+
+
+RoadsSchema.statics.getcarriagewayperconcount =  function(qry,cb){    
+    var _agg = [{$group: { '_id': '$RoadCarriageway.SegmentCon', 'SegmentCon': { $push: '$RoadCarriageway.SegmentCon'}}},
+					{'$project':{_id:1,'SegmentCon':'$SegmentCon'}
+					},
+					{'$unwind':'$_id'},
+					{'$project':
+					  			{
+								'Good':{'$cond':[{'$eq':['G','$_id']},1,0]},
+								'Poor':{'$cond':[{'$eq':['P','$_id']},1,0]},
+								'Fair':{'$cond':[{'$eq':['F','$_id']},1,0]},
+								'New':{'$cond':[{'$eq':['N','$_id']},1,0]},
+								'Bad':{'$cond':[{'$eq':['B','$_id']},1,0]}
+								}
+					},
+					{ '$group': {
+        						'_id': '',
+        						'Poor': { '$sum': '$Poor' },
+        						'Good': { '$sum': '$Good' },
+        						'Fair': { '$sum': '$Fair' },
+        						'New': { '$sum': '$New' },
+        						'Bad': { '$sum': '$Bad' },        						
+        						 'total': { '$sum': 1 }
+    				}}					
+					];
+
+
+    if(qry){_agg.unshift.qry}                    
+    this.aggregate(_agg,cb)
+}
+
+RoadsSchema.statics.getcarriagewaypersurfacelength =  function(qry,cb){
+    var _agg = [{ '$unwind': '$RoadCarriageway' },
+                            { '$group': {
+                                            '_id': '$_id',
+                                            'Asphalt': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SurfaceTyp', 'A' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Concrete': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SurfaceTyp', 'C' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Earth': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SurfaceTyp', 'E' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Gravel': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SurfaceTyp', 'G' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Mixed': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SurfaceTyp', 'M' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            }																
+                                        }
+                            },
+                            {
+                            '$group': {
+                                            '_id': '',
+                                            'Concrete': { '$sum': '$Concrete' },
+                                            'Asphalt': { '$sum': '$Asphalt' },
+                                            'Gravel': { '$sum': '$Gravel' },
+                                            'Earth': { '$sum': '$Earth' },
+                                            'Mixed': { '$sum': '$Mixed' },        						
+                                            'total': { '$sum': 1 }
+                                }
+                            }
+            ];
+
+    if(qry){_agg.unshift.qry}                    
+    this.aggregate(_agg,cb)
+}    
+ 
+
+RoadsSchema.statics.getcarriagewaypersurfacecount =  function(qry,cb){
+
+    var _agg = [{$group: { '_id': '$RoadCarriageway.SurfaceTyp', 'SurfaceTyp': { $push: '$RoadCarriageway.SurfaceTyp'}}},
+					{'$project':{_id:1,'SurfaceTyp':'$SurfaceTyp'}
+					},
+					{'$unwind':'$_id'},
+					{'$project':
+					  			{
+								'Concrete':{'$cond':[{'$eq':['C','$_id']},1,0]},
+								'Asphalt':{'$cond':[{'$eq':['A','$_id']},1,0]},
+								'Gravel':{'$cond':[{'$eq':['G','$_id']},1,0]},
+								'Earth':{'$cond':[{'$eq':['E','$_id']},1,0]},
+								'Mixed':{'$cond':[{'$eq':['M','$_id']},1,0]}
+								}
+					},
+					{ '$group': {
+        						'_id': '',
+        						'Concrete': { '$sum': '$Concrete' },
+        						'Asphalt': { '$sum': '$Asphalt' },
+        						'Gravel': { '$sum': '$Gravel' },
+        						'Earth': { '$sum': '$Earth' },
+        						'Mixed': { '$sum': '$Mixed' },        						
+        						'total': { '$sum': 1 }
+    				}}];
+     if(qry){_agg.unshift.qry}                    
+    this.aggregate(_agg,cb)
+}
+
+	
 
 RoadsSchema.plugin(mongooseAggregatePaginate);
 mongoose.model('Roads', RoadsSchema);

@@ -1,1 +1,108 @@
-Dashboard
+<div class="row" ng-init="init()">
+    <div class="page-bar page-bar-color2">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="/#/dashboard">Home</a>						
+                        </li>										
+                    </ul>
+    </div>
+<div>
+<div class="">
+<md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Summary">
+                <md-content class="md-padding">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat blue-madison">
+                                <div class="visual">
+                                    <i class="fa fa-road"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                            327.622
+                                    </div>
+                                    <div class="desc">
+                                            Total Road Length (km)
+                                    </div>
+                                </div>
+                                <a class="more" href="road-info.aspx">
+                                View details <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat green-haze">
+                                <div class="visual">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                            0.540
+                                    </div>
+                                    <div class="desc">
+                                            Total Bridge Length (km)
+                                    </div>
+                                </div>
+                                <a class="more" href="road-info.aspx">
+                                View details <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                                <!--
+                                <a class="more" href="bridges.aspx">
+                                View details <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                                //-->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat purple-plum">
+                                <div class="visual">
+                                    <i class="glyphicon glyphicon-stats"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                            331
+                                    </div>
+                                    <div class="desc">
+                                            No. of Road Segments
+                                    </div>
+                                </div>
+                                <a class="more" href="road-info.aspx">
+                                View details <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat yellow-casablanca">
+                                <div class="visual">
+                                    <i class="fa fa-compass"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">Php 10.00</div><div class="desc">Total Asset Value (Million)</div>
+                                </div>
+                                <a class="more" href="road-info.aspx">
+                                View details <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>                                    
+                </md-content>
+             </md-tab>
+            <md-tab label="Timeline">
+                <md-content>
+                     <timeline>
+                        <timeline-event ng-repeat="event in events" side="alternate">
+                        <timeline-badge class="{{event.badgeClass}}">
+                            <i class="glyphicon {{event.badgeIconClass}}"></i>
+                        </timeline-badge>
+                        <timeline-panel class="{{event.badgeClass}}">
+                            <timeline-heading>
+                            <h4>{{event.title}}</h4>
+                            </timeline-heading>
+                            <p>{{event.content}}</p>
+                        </timeline-panel>
+                        </timeline-event>
+                    </timeline>
+                </md-content>    
+            </md-tab>                                 
+</md-tabs>
+</div>
+    

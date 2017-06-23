@@ -1,6 +1,6 @@
 'use strict';
 (function(){
-    var RBIS = angular.module('RBIS', ['ui.router','uiRouterStyles','ngSanitize','oc.lazyLoad','ui.bootstrap','ui.sortable','chart.js','moment-picker','ngMaterial']);            
+    var RBIS = angular.module('RBIS', ['ui.router','uiRouterStyles','ngSanitize','oc.lazyLoad','ui.bootstrap','ui.sortable','chart.js','moment-picker','ngMaterial','angular-timeline']);            
     RBIS.config(['$stateProvider','$urlRouterProvider', '$httpProvider', '$ocLazyLoadProvider',function($stateProvider, $urlRouterProvider, $httpProvider,$ocLazyLoadProvider) {
                 $ocLazyLoadProvider.config({
                     // Set to true if you want to see what and when is dynamically loaded
@@ -17,7 +17,20 @@
                               .state('home.dashboard', {                                  
                                   url: 'dashboard',
                                   templateUrl: '/home/views/main.html',
-                                  data : { pageTitle: 'Dashboard | Road and Bridge Information System' } 
+                                  data : { pageTitle: 'Dashboard | Road and Bridge Information System' },
+                                  controller:"dashboardCtrl",
+                                  resolve:{                                            
+                                            loadfile: function ($ocLazyLoad) {
+                                                return $ocLazyLoad.load([
+                                                    {
+                                                        cache:true,
+                                                        files: ['/home/assets/css/dashboard.css',
+                                                                '/home/controllers/dashboard.js'                                                                
+                                                                ]
+                                                    }                                                    
+                                                ]);
+                                            }                                      
+                                  }  
                               })
                               .state('road', {
                                  abstract:true,

@@ -1,0 +1,160 @@
+ <!-- Road Main-->
+<script type="text/ng-template" id="roadfieldcontrol">
+
+    <label ng-if="currentModel.struct[field].ctrl=='label'">{{ currentModel.currentItem[field] }}</label>
+    <input type="text" ng-if="currentModel.struct[field].ctrl=='text'"  ng-model="currentModel.currentItem[field]" class="{{currentModel.struct[field].class}}"></input>
+    <select ng-if="currentModel.struct[field].ctrl=='select'" ng-model="currentModel.currentItem[field]" class="{{currentModel.struct[field].class}}">
+        <option value="{{opt.key}}"  ng-selected="currentModel.currentItem[field]==opt.key" ng-repeat="opt in currentModel.struct[field].options">{{ opt.label }}</option>
+    </select>                                   
+    <div layout-gt-xs="row" ng-if="currentModel.struct[field].ctrl=='date'">
+        <div flex-gt-xs>                                    
+        <md-datepicker ng-model="currentModel.currentItem[field]" md-placeholder="Enter date"></md-datepicker>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="roadmain">
+    <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Details">
+                <table  class="table">
+                    <tr>
+                        <td>{{ currentModel.struct['R_ID'].label }}</td>
+                        <td><div ng-repeat = "field in ['R_ID']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['R_NAME'].label }}</td>
+                        <td ng-repeat = "field in ['R_NAME']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['R_CLASS'].label }}</td>
+                        <td ng-repeat = "field in ['R_CLASS']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['R_Importan'].label }}</td>
+                        <td ng-repeat = "field in ['R_Importan']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['Environmen'].label }}</td>
+                        <td ng-repeat = "field in ['Environmen']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['DirFlow'].label }}</td>
+                        <td ng-repeat = "field in ['DirFlow']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['Terrain'].label }}</td>
+                        <td ng-repeat = "field in ['Terrain']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>{{ currentModel.struct['Length'].label }}</td>
+                        <td ng-repeat = "field in ['Length']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['RROW_acq_date'].label }}</td>
+                        <td ng-repeat = "field in ['RROW_acq_date']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['RROW_acq_cost'].label }}</td>
+                        <td ng-repeat = "field in ['RROW_acq_cost']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>
+                    <tr>
+                         <td>{{ currentModel.struct['RROW_usefullife'].label }}</td>
+                         <td ng-repeat = "field in ['RROW_usefullife']" ng-include="'roadfieldcontrol'"></td>
+                    </tr>    
+                </table>    
+                <!--
+                <table>
+                                    <tr ng-if="currentModel.struct[field].visible" ng-repeat = "field in currentModel.structfields">
+                                        <td >{{ currentModel.struct[field].label }} : </td>
+                                        <td>
+                                            <label ng-if="currentModel.struct[field].ctrl=='label'">{{ road[field] }}</label>
+                                            <input type="text" ng-if="currentModel.struct[field].ctrl=='text'"  ng-model="road[field]" class="{{currentModel.struct[field].class}}"></input>
+                                            <select ng-if="currentModel.struct[field].ctrl=='select'" ng-model="road[field]" class="{{currentModel.struct[field].class}}">
+                                                <option value="{{opt.key}}"  ng-selected="road[field]==opt.key" ng-repeat="opt in currentModel.struct[field].options">{{ opt.label }}</option>
+                                            </select>                                   
+                                            <div layout-gt-xs="row" ng-if="currentModel.struct[field].ctrl=='date'">
+                                                <div flex-gt-xs>                                    
+                                                <md-datepicker ng-model="road[field]" md-placeholder="Enter date"></md-datepicker>
+                                                </div>
+                                            </div>
+                                            
+                                        </td>    
+                                    </tr>
+                    </table>
+                    -->
+               </md-tab>
+          <md-tab label="Remarks/Status"> 
+                {{ currentModel.struct['remarks'].label }}         
+                    <textarea ng-model="road['remarks']" 
+                              class="{{currentModel.struct['remarks'].class}}" 
+                              style="currentModel.struct['remarks'].style">
+                    </textarea>
+        </md-tab>
+        <md-tab label="Attachment"> 
+        <md-tab>
+     </md-tabs>   
+    
+</script>
+
+<script type="text/ng-template" id="roadattributesList">
+       <div>List time here</div>
+    
+</script>
+
+
+<script type="text/ng-template" id="template_RoadCarriageway">
+    <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Details">
+                <table class="table">
+                    <tr>
+                        <td>{{ currentModel.struct['SegmentID'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SegmentID']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Location Reference:</td>                        
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['LRPStartKm'].label }}</td>
+                        <td><div ng-repeat = "field in ['LRPStartKm']" ng-include="'roadfieldcontrol'"></div></td>
+                        <td><div ng-repeat = "field in ['LRPStartDi']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['LRPEndKmPo'].label }}</td>
+                        <td><div ng-repeat = "field in ['LRPEndKmPo']" ng-include="'roadfieldcontrol'"></div></td>
+                        <td><div ng-repeat = "field in ['LRPEndDisp']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['NumLanes'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['NumLanes']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['LaneWidthL'].label }}</td>
+                        <td><div ng-repeat = "field in ['LaneWidthL']" ng-include="'roadfieldcontrol'"></div></td>
+                        <td>{{ currentModel.struct['LaneWidthR'].label }}</td>
+                        <td><div ng-repeat = "field in ['LaneWidthR']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['SegmentLen'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SegmentLen']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['SurfaceTyp'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SurfaceTyp']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>                                        
+                </table>                    
+               </md-tab>
+          <md-tab label="Remarks/Status"> 
+                {{ currentModel.struct['remarks'].label }}         
+                    <textarea ng-model="road['remarks']" 
+                              class="{{currentModel.struct['remarks'].class}}" 
+                              style="currentModel.struct['remarks'].style">
+                    </textarea>
+        </md-tab>
+        <md-tab label="Attachment"> 
+        <md-tab>
+     </md-tabs>   
+    
+</script>
+                   
