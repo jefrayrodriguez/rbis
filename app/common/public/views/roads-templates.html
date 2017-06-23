@@ -126,6 +126,14 @@
                         <td><div ng-repeat = "field in ['LRPEndDisp']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                     <tr>
+                        <td>{{ currentModel.struct['SegmentLen'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SegmentLen']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['carriagewayWidth'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['carriagewayWidth']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['NumLanes'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['NumLanes']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
@@ -136,13 +144,47 @@
                         <td><div ng-repeat = "field in ['LaneWidthR']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                     <tr>
-                        <td>{{ currentModel.struct['SegmentLen'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['SegmentLen']" ng-include="'roadfieldcontrol'"></div></td>                                               
-                    </tr>
-                    <tr>
                         <td>{{ currentModel.struct['SurfaceTyp'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['SurfaceTyp']" ng-include="'roadfieldcontrol'"></div></td>                                               
-                    </tr>                                        
+                    </tr>
+                     <tr>
+                        <td>{{ currentModel.struct['PavementTy'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['PavementTy']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['PavementThickness'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['PavementThickness']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['PavementStrength'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['PavementStrength']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['DateOfLast'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['DateOfLast']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                     <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['ConstructionValue'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionValue']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['YearOfReco'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['YearOfReco']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['SegmentCon'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SegmentCon']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['Lifeyears'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Lifeyears']" ng-include="'roadfieldcontrol'"></div></td>                                               
+                    </tr>
+
+
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -165,6 +207,10 @@
                     <tr>
                         <td>{{ currentModel.struct['R_ID'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['R_ID']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                     <tr>
+                        <td>{{ currentModel.struct['R_NAME'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['R_NAME']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                      <tr>
                         <td  colspan="4"> <font color = "#4286f4">Location Reference:</font> </td>                        
@@ -226,6 +272,20 @@
                         <td colspan="3"><div ng-repeat = "field in ['LandUse']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                     <tr>
+                        <td>{{ currentModel.struct['BridgeUtil'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['BridgeUtil']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td>
+                        <label class="checkbox-inline"><input type="checkbox" value="">Water</label>
+                        <label class="checkbox-inline"><input type="checkbox" value="">Sewerage</label>
+                        <label class="checkbox-inline"><input type="checkbox" value="">Electricity</label>
+                        <label class="checkbox-inline"><input type="checkbox" value="">Telephone</label>
+                        </td>
+                    </tr>    
+                    -->
+                    <tr>
                         <td  colspan="4"> <font color = "#4286f4">Super-Structure:</font> </td>                        
                     </tr>
                     <tr>
@@ -233,10 +293,6 @@
                         <td colspan="3"><div ng-repeat = "field in ['SuperStruc']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                     <tr>
-                        <td>{{ currentModel.struct['NumGirders'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['NumGirders']" ng-include="'roadfieldcontrol'"></div></td>
-                    </tr>
-                       <tr>
                         <td>{{ currentModel.struct['NoOfSpan'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['NoOfSpan']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>  
@@ -261,13 +317,41 @@
                         <td colspan="3"><div ng-repeat = "field in ['DeckDime_3']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>  
                     <tr>
-                        <td>{{ currentModel.struct['ExpansionJ'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ExpansionJ']" ng-include="'roadfieldcontrol'"></div></td>
-                    </tr>  
+                        <td>{{ currentModel.struct['NoOfLanes'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['NoOfLanes']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr> 
+                     <tr>
+                        <td>{{ currentModel.struct['BearingType'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['BearingType']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr> 
+                     <tr>
+                        <td>{{ currentModel.struct['NumGirders'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['NumGirders']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                   <tr>
+                        <td>{{ currentModel.struct['CarriageWidth'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['CarriageWidth']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
                     <tr>
+                        <td>{{ currentModel.struct['SideWalkWidth'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SideWalkWidth']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                   <tr>
+                        <td>{{ currentModel.struct['TotalWidth'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['TotalWidth']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr> 
+                   <tr>
+                        <td>{{ currentModel.struct['SkewDeg'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SkewDeg']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr> 
+                   <tr>
                         <td>{{ currentModel.struct['Surfacing'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Surfacing']" ng-include="'roadfieldcontrol'"></div></td>
-                    </tr>  
+                    </tr> 
+                    <tr>
+                        <td>{{ currentModel.struct['ExpansionJ'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ExpansionJ']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>   
                     <tr>
                         <td>{{ currentModel.struct['RailingTyp'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['RailingTyp']" ng-include="'roadfieldcontrol'"></div></td>
@@ -309,6 +393,10 @@
                      <tr>
                         <td>{{ currentModel.struct['RiverName'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['RiverName']" ng-include="'roadfieldcontrol'"></div></td>
+                    </tr>
+                     <tr>
+                        <td>{{ currentModel.struct['RiverWidth'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['RiverWidth']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                     <tr>
                         <td>{{ currentModel.struct['RiverAlignment'].label }}</td>
@@ -574,7 +662,11 @@
                         <td>{{ currentModel.struct['Position'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
-                            <tr>
+                     <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr> 
+                     <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
@@ -585,10 +677,6 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>                                     
                 </table>                    
                </md-tab>
@@ -681,25 +769,29 @@
                         <td>{{ currentModel.struct['Position'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
+                     <tr>
+                        <td>{{ currentModel.struct['NoOfLightings'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['NoOfLightings']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
                     <tr>
                         <td>{{ currentModel.struct['Exist'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Exist']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                     <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
-                    <tr>
+                    </tr> 
+                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
-                    <tr>
+                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>                                           
                 </table>                    
                </md-tab>
@@ -739,29 +831,29 @@
                         <td><div ng-repeat = "field in ['LRPEndDisp']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                     <tr>
-                        <td>{{ currentModel.struct['Position'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
+                        <td>{{ currentModel.struct['MarkingType'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['MarkingType']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                     <tr>
                         <td>{{ currentModel.struct['Exist'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Exist']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
+                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
                      <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
-                    <tr>
+                    </tr> 
+                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
-                    <tr>
+                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                           
+                    </tr>                                              
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -807,10 +899,22 @@
                         <td>{{ currentModel.struct['Exist'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Exist']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
-                     <tr>
+                    <tr>
+                        <td>{{ currentModel.struct['SignageType'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SignageType']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['SignageSize'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['SignageSize']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -818,11 +922,7 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                           
+                    </tr>                                               
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -866,17 +966,29 @@
                         <td colspan="3"><div ng-repeat = "field in ['Width']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>    
                     <tr>
-                        <td>{{ currentModel.struct['Position'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
-                    <tr>
                         <td>{{ currentModel.struct['Exist'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Exist']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
+                    <tr>
+                        <td>{{ currentModel.struct['Position'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                      <tr>
+                        <td>{{ currentModel.struct['TypeID'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['TypeID']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
                      <tr>
+                        <td>{{ currentModel.struct['Width'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Width']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -884,11 +996,7 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
+                    </tr>               
                                                            
                 </table>                    
                </md-tab>
@@ -932,17 +1040,25 @@
                         <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                     <tr>
+                        <td>{{ currentModel.struct['TypeID'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['TypeID']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Angle'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Exist']" ng-include="'roadfieldcontrol'"></div></td>                       
+                        <td colspan="3"><div ng-repeat = "field in ['Angle']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
                      <tr>
                         <td>{{ currentModel.struct['Protection'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Protection']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -950,11 +1066,7 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                            
+                    </tr>                                                
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -1000,10 +1112,14 @@
                         <td>{{ currentModel.struct['Position'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
-                     <tr>
+                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -1011,11 +1127,7 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                            
+                    </tr>                                                  
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -1023,6 +1135,7 @@
                     <textarea ng-model="road['remarks']" 
                               class="{{currentModel.struct['remarks'].class}}" 
                               style="{{currentModel.struct['remarks'].style}}">
+
                     </textarea>
         </md-tab>
         <md-tab label="Attachment"> 
@@ -1054,18 +1167,25 @@
                         <td><div ng-repeat = "field in ['LRPEndDisp']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
                     <tr>
-                        <td>{{ currentModel.struct['Width'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Width']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>   
-
-                    <tr>
                         <td>{{ currentModel.struct['Position'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                      <tr>
+                        <td>{{ currentModel.struct['TypeID'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['TypeID']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                     <tr>
+                        <td>{{ currentModel.struct['Width'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Width']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>   
+                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -1073,11 +1193,7 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                         
+                    </tr>                                                       
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -1121,10 +1237,6 @@
                         <td colspan="3"><div ng-repeat = "field in ['TypeID']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
                     <tr>
-                        <td>{{ currentModel.struct['Position'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
-                    <tr>
                         <td>{{ currentModel.struct['Width'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Width']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
@@ -1132,10 +1244,14 @@
                         <td>{{ currentModel.struct['Length'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Length']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
-                     <tr>
+                    <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -1143,11 +1259,7 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                            
+                    </tr>                                                   
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -1222,9 +1334,13 @@
                         <td colspan="3"><div ng-repeat = "field in ['Slope']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>      
                      <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
+                    </tr> 
                     <tr>
                         <td>{{ currentModel.struct['Usefullife'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
@@ -1232,10 +1348,6 @@
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>                                         
                 </table>                    
                </md-tab>
@@ -1282,26 +1394,26 @@
                         <td>{{ currentModel.struct['TypeID'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['TypeID']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>  
-                     <tr>
-                        <td>{{ currentModel.struct['Cost'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
-                       <tr>
-                        <td>{{ currentModel.struct['Width'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Width']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>   
-                     <tr>
+                    <tr>
                         <td>{{ currentModel.struct['Size'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Size']" ng-include="'roadfieldcontrol'"></div></td>                       
+                   </tr>
+                   <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
+                        <td>{{ currentModel.struct['Cost'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr> 
+                    <tr>
+                        <td>{{ currentModel.struct['Usefullife'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                          
+                    </tr>                        
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
@@ -1339,13 +1451,9 @@
                         <td><div ng-repeat = "field in ['LRPEndKmPo']" ng-include="'roadfieldcontrol'"></div></td>
                         <td><div ng-repeat = "field in ['LRPEndDisp']" ng-include="'roadfieldcontrol'"></div></td>
                     </tr>
-                    <tr>
-                        <td>{{ currentModel.struct['Position'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Position']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>
                       <tr>
-                        <td>{{ currentModel.struct['Size'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['Size']" ng-include="'roadfieldcontrol'"></div></td>                       
+                        <td>{{ currentModel.struct['TypeID'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['TypeID']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr> 
                          <tr>
                         <td>{{ currentModel.struct['Width'].label }}</td>
@@ -1355,18 +1463,22 @@
                         <td>{{ currentModel.struct['Length'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Length']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>  
-                     <tr>
+                    <tr>
+                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr>
+                    <tr>
                         <td>{{ currentModel.struct['Cost'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Cost']" ng-include="'roadfieldcontrol'"></div></td>                       
+                    </tr> 
+                    <tr>
+                        <td>{{ currentModel.struct['Usefullife'].label }}</td>
+                        <td colspan="3"><div ng-repeat = "field in ['Usefullife']" ng-include="'roadfieldcontrol'"></div></td>                       
                     </tr>
                     <tr>
                         <td>{{ currentModel.struct['Condition'].label }}</td>
                         <td colspan="3"><div ng-repeat = "field in ['Condition']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr> 
-                     <tr>
-                        <td>{{ currentModel.struct['ConstructionDate'].label }}</td>
-                        <td colspan="3"><div ng-repeat = "field in ['ConstructionDate']" ng-include="'roadfieldcontrol'"></div></td>                       
-                    </tr>                                            
+                    </tr>                                                  
                 </table>                    
                </md-tab>
           <md-tab label="Remarks/Status"> 
