@@ -164,7 +164,7 @@ RoadsSchema.statics.getroadaggmain =  function(qryStr,page,limit,cb){
                         R_CLASS:1,            
                         bridgecount: { $size: "$RoadBridges" },
                         segmentcount:{$size:"$RoadCarriageway"},     
-                        roadlengths:"$RoadCarriageway.SegmentLen"            
+                        roadlengths: {$cond: [ { '$eq':[{$size:"$RoadCarriageway"},0]}, [0], "$RoadCarriageway.SegmentLen"]}//"$RoadCarriageway.SegmentLen"            
         })
         .unwind("$roadlengths")
         .group({_id:{_id:"$_id",R_ID:"$R_ID",R_NAME:"$R_NAME",R_CLASS:"$R_CLASS",segmentcount:"$segmentcount",SegmentID:"$SegmentID",bridgecount:"$bridgecount",segmentcount:"$segmentcount"},
