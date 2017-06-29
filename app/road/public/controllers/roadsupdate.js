@@ -1,4 +1,4 @@
-angular.module('RBIS').controller("roadsupdateCtrl", function( $scope, $http,$rootScope,$window,$timeout,utilities,$stateParams,datamodel) {
+angular.module('RBIS').controller("roadsupdateCtrl", function( $scope, $http,$rootScope,$window,$timeout,utilities,$stateParams,datamodel,adapter) {
     $scope.param = $stateParams;    
     $scope.road = {}
     $scope.roadsummarydisplay = 0;    
@@ -11,6 +11,7 @@ angular.module('RBIS').controller("roadsupdateCtrl", function( $scope, $http,$ro
 
 
     $scope.currentModel= {};
+    $scope.currentModel.roadID = "";
     $scope.currentModel.name = "";
     $scope.currentModel.list = [];
     $scope.currentModel.currentItem = null;
@@ -48,12 +49,17 @@ $scope.loadattrsFeaturesdata =  function(key,data){
 
 $scope.init =  function(){
     $timeout(function(){
+
             $http.get("/api/roads/getroadshortattrinfo?rid=" + $stateParams.id).success(function(data){
-                    $scope.road = data;       
+                    $scope.road = data;             
+                    $scope.currentModel.roadID = data.R_ID;
+                    adapter.init(data.R_ID);              
                     $scope.loadAttrAsOptions("RoadLocRefPoints",["RoadCarriageway",]);              
                     $scope.loadRoadMainData();
+                    
             });
             $("#roadmap").leafletMaps();
+
     });
 };
 $scope.loadRoadMainData =  function(){
@@ -95,8 +101,7 @@ $scope.getattrdata = function(key,cb){
     }else{        
         $scope.initModelData(key,null,$scope.road[key]); 
 
-    }     
-    
+    };         
 };
 
 
@@ -146,8 +151,22 @@ $scope.loadattrdata =  function(data,name){
     //console.log(data);
 }
 
+$scope.ondatadirty =  function(a,b,c){
+    adapter.processdata(a,b,c);
+};
 
-  this.myDate = new Date();
-  this.isOpen = false;
 
+
+$scope.toolbarAction = function(a,e){
+    console.log(a);
+    var action = {save:function(){
+                    adapter.save($scope.currentModel);
+                },saveall:function(){
+                    adapter.save();
+                }
+        };
+
+
+    action[a]();
+}
 });

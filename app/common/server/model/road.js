@@ -112,6 +112,7 @@ RoadsSchema.statics.getroadattrinfo =  function(rid,cb){
 RoadsSchema.statics.getroadshortattrinfo =  function(rid,cb){
     this.findOne({R_ID:rid}).exec(function(err,data){
             var _row = {};
+            _row._id = data._id;
             for( var key in ROAD_MODEL_STRUC){
                 if(ROAD_ATTR_DET.indexOf(key)>-1){
                     var a = key + "_length";

@@ -62,7 +62,7 @@
         </div>
     </div>
     <div>
-        <div class="col-md-3" style="margin:0px;padding:0px">
+        <div class="col-md-3 attr-tree-main" style="margin:0px;padding:0px">
          <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Main Info">
                 <md-content class="md-padding">
@@ -159,8 +159,102 @@
                 </li>                                    
             </ul>
         </div>
-        <div><!--- Content fields -->
-            <div class="col-md-7 no-padding content-data-attr">        
+        <div class="col-md-7 no-padding"><!--- Content fields -->
+           <div class="content-data-action">               
+            <md-toolbar class="md-menu-toolbar">
+                    <md-menu-bar>
+                        <md-menu>
+                            <button ng-click="$mdMenu.open()">
+                            Action
+                            </button>  
+                            <md-menu-content>                            
+                                <md-menu-item ng-hide="currentModel.name=='road'">
+                                    <md-button ng-click="toolbarAction('new', $event)">
+                                        <i class="fa fa-file-text" aria-hidden="true">&nbsp;New {{currentModel.name}}</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item ng-hide="currentModel.name=='road'">
+                                    <md-button ng-click="toolbarAction('save', $event)">
+                                        <i class="fa fa-floppy-o" aria-hidden="true">&nbsp;Save</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('saveall', $event)">
+                                        <i class="fa fa-floppy-o" aria-hidden="true">&nbsp;Save All</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        Cancel
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-times" aria-hidden="true">&nbsp;Delete</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-refresh" aria-hidden="true">&nbsp;Refresh window</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        Print
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                        <md-menu>
+                            <button ng-click="$mdMenu.open()">
+                            Shapes
+                            </button>  
+                            <md-menu-content>                            
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-file-text" aria-hidden="true">&nbsp;Import(Geojson/KML)</i>
+                                    </md-button>
+                                </md-menu-item>
+                               <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-download" aria-hidden="true">&nbsp;Export to GeoJSON</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-download" aria-hidden="true">&nbsp;Export to KML</i>
+                                    </md-button>
+                                </md-menu-item> 
+                            </md-menu-content>
+                        </md-menu>
+                        <md-menu>
+                            <button ng-click="$mdMenu.open()">
+                            Media Files
+                            </button>  
+                            <md-menu-content>                            
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-file-image-o" aria-hidden="true">&nbsp;Add Images</i>
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="toolbarAction('share', $event)">
+                                        <i class="fa fa-file-text" aria-hidden="true">&nbsp;Attached Document</i>
+                                    </md-button>
+                                </md-menu-item>
+
+                            </md-menu-content>
+                        </md-menu>
+                    </md-menu-bar> 
+            </md-toolbar>            
+           </div>
+            <div class="content-data-attr">        
                     <div ng-if="currentModel.name =='road'" ng-include="'roadmain'"></div>                    
                     <div  ng-if="currentModel.name!='road' && currentModel.list.length>0" ng-include="'roadattributesList'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCarriageway'" ng-include="'template_RoadCarriageway'"></div>                    
@@ -182,11 +276,12 @@
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCulverts'" ng-include="'template_RoadCulverts'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadDitches'" ng-include="'template_RoadDitches'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSpillways'" ng-include="'template_RoadSpillways'"></div>
-           </div>
+           </div>   
+         </div>
            <div class="col-md-5 no-padding">
                 <div id="roadmap" style=" display: block;outline: medium none;position: relative;z-index: 0;"> </div>
            </div>        
-         </div>   
+   
         </div>      
     </div>                    
 </div>
