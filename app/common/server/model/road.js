@@ -112,6 +112,7 @@ RoadsSchema.statics.getroadattrinfo =  function(rid,cb){
 RoadsSchema.statics.getroadshortattrinfo =  function(rid,cb){
     this.findOne({R_ID:rid}).exec(function(err,data){
             var _row = {};
+            _row._id = data._id;
             for( var key in ROAD_MODEL_STRUC){
                 if(ROAD_ATTR_DET.indexOf(key)>-1){
                     var a = key + "_length";
@@ -161,13 +162,14 @@ RoadsSchema.statics.getroadaggmain =  function(qryStr,page,limit,cb){
                         R_ID: 1,
                         SegmentID:1,
                         R_NAME:1,
-                        R_CLASS:1,            
+                        R_CLASS:1,          
+                        R_Importan:1,  
                         bridgecount: { $size: "$RoadBridges" },
                         segmentcount:{$size:"$RoadCarriageway"},     
-                        roadlengths:"$RoadCarriageway.SegmentLen"            
+                        roadlengths: {$cond: [ { '$eq':[{$size:"$RoadCarriageway"},0]}, [0], "$RoadCarriageway.SegmentLen"]}//"$RoadCarriageway.SegmentLen"            
         })
         .unwind("$roadlengths")
-        .group({_id:{_id:"$_id",R_ID:"$R_ID",R_NAME:"$R_NAME",R_CLASS:"$R_CLASS",segmentcount:"$segmentcount",SegmentID:"$SegmentID",bridgecount:"$bridgecount",segmentcount:"$segmentcount"},
+        .group({_id:{_id:"$_id",R_ID:"$R_ID",R_NAME:"$R_NAME",R_CLASS:"$R_CLASS",R_Importan:"$R_Importan",segmentcount:"$segmentcount",SegmentID:"$SegmentID",bridgecount:"$bridgecount",segmentcount:"$segmentcount"},
                     roadlengths: {$sum:"$roadlengths"}
                 });
 
@@ -241,9 +243,57 @@ RoadsSchema.statics.getcarriagewayperconcount =  function(qry,cb){
 					];
 
 
-    if(qry){_agg.unshift.qry}                    
+    if(qry){_agg.unshift(qry)}                    
     this.aggregate(_agg,cb)
 }
+
+RoadsSchema.statics.getcarriagewayperconlength =  function(qry,cb){
+    var _agg = [{ '$unwind': '$RoadCarriageway' },
+                            { '$group': {
+                                            '_id': '$_id',
+                                            'Good': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SegmentCon', 'G' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Poor': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SegmentCon', 'P' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Fair': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SegmentCon', 'F' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'New': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SegmentCon', 'N' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            },
+                                            'Bad': {
+                                                            '$sum': {
+                                                                    '$cond': [{ '$eq': [ '$RoadCarriageway.SegmentCon', 'B' ] },'$RoadCarriageway.SegmentLen',0]
+                                                                    }
+                                                            }																
+                                        }
+                            },
+                            {
+                            '$group': {
+                                            '_id': '',
+                                            'Good': { '$sum': '$Good' },
+                                            'Poor': { '$sum': '$Poor' },
+                                            'Fair': { '$sum': '$Fair' },
+                                            'New': { '$sum': '$New' },
+                                            'Bad': { '$sum': '$Bad' },        						
+                                            'total': { '$sum': 1 }
+                                }
+                            }
+            ];
+
+    if(qry){_agg.unshift(qry)}                    
+    this.aggregate(_agg,cb)
+}    
 
 RoadsSchema.statics.getcarriagewaypersurfacelength =  function(qry,cb){
     var _agg = [{ '$unwind': '$RoadCarriageway' },
@@ -289,7 +339,7 @@ RoadsSchema.statics.getcarriagewaypersurfacelength =  function(qry,cb){
                             }
             ];
 
-    if(qry){_agg.unshift.qry}                    
+    if(qry){_agg.unshift(qry)}                    
     this.aggregate(_agg,cb)
 }    
  
@@ -318,11 +368,33 @@ RoadsSchema.statics.getcarriagewaypersurfacecount =  function(qry,cb){
         						'Mixed': { '$sum': '$Mixed' },        						
         						'total': { '$sum': 1 }
     				}}];
-     if(qry){_agg.unshift.qry}                    
+     if(qry){_agg.unshift(qry)}              
     this.aggregate(_agg,cb)
 }
 
 	
+
+
+
+RoadsSchema.statics.getcarriagewaycount =  function(qry,cb){
+
+    var _agg = [
+                {
+                    "$project": { 
+                        segmentcount:{$size:"$RoadCarriageway"}                        
+                    }       
+                },
+                    {"$group":{
+                            _id:"",	
+                            segmentcount: {$sum:"$segmentcount"}
+                            }
+                    }
+            ]
+
+    if(qry){_agg.unshift.qry}                    
+    this.aggregate(_agg,cb)
+};
+
 
 RoadsSchema.plugin(mongooseAggregatePaginate);
 mongoose.model('Roads', RoadsSchema);

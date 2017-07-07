@@ -28,14 +28,19 @@
 
 
 
-/* updat page*/
+/* update page*/
 .features-title {font-weight: 500;margin: 0px;padding: 0;}
 .segment-id {color: #4d9ac5;}
 .note-font{font-size: 11px;}
 
 .roads-tree-attr-wrapper{height:400px;overflow-y: auto;}
 .roads-tree-attr-main{list-style:none;padding-left:2px;padding-top;}
+.attr-tree-main .md-padding{padding: 0px !important}
 .roads-tree-attr-child{list-style:none;padding-left:24px;}
-.content-data-attr{height:420px;;overflow-y: auto;}
+.content-data-attr{height:390px;;overflow-y: auto;border-top: solid 1px #888;margin-top: 1px;}
+.content-data-action{height:30px;border-top:solid 1px #888;border-bottom:solid 1px #888;border-left:solid 10px #888}
 
+
+.md-menu-toolbar{min-height:30px !important;background-color:#fafafa !important;}
+.md-menu-toolbar button{height:20px !important;}
 
