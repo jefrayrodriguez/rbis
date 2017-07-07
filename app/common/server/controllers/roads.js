@@ -85,7 +85,19 @@ exports.getbridgelengthtotal = (req,res)=>{
 exports.getcarriagewayperconcount = (req,res)=>{
     var roads = mongoose.model("Roads");
     var _qry = req.query.qry || [];
+        if(_qry.length>0){_qry = {'$match':{R_ID: _qry}};}
     roads.getcarriagewayperconcount(_qry,function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
+
+exports.getcarriagewayperconlength = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    var _qry = req.query.qry || [];
+    if(_qry.length>0){_qry = {'$match':{R_ID: _qry}};}
+    roads.getcarriagewayperconlength(_qry,function(err,data){
         if(err){res.status(500).json(err);return;};
         res.status(200).json(data[0]);
     });
@@ -94,20 +106,36 @@ exports.getcarriagewayperconcount = (req,res)=>{
 exports.getcarriagewaypersurfacelength = (req,res)=>{
     var roads = mongoose.model("Roads");
     var _qry = req.query.qry || [];
+    if(_qry.length>0){_qry = {'$match':{R_ID: _qry}};}
     roads.getcarriagewaypersurfacelength(_qry,function(err,data){
         if(err){res.status(500).json(err);return;};
         res.status(200).json(data[0]);
     });
 }
 
+
+
+
 exports.getcarriagewaypersurfacecount = (req,res)=>{
     var roads = mongoose.model("Roads");
     var _qry = req.query.qry || [];
+
+    if(_qry.length>0){_qry = {'$match':{R_ID:_qry}};}
     roads.getcarriagewaypersurfacecount(_qry,function(err,data){
         if(err){res.status(500).json(err);return;};
         res.status(200).json(data[0]);
     });
 }
+
+exports.getcarriagewaycount = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    var _qry = req.query.qry || [];
+    roads.getcarriagewaycount(_qry,function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data[0]);
+    });
+}
+
 
 
 

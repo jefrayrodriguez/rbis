@@ -598,7 +598,7 @@ datamodel.structure = {
 datamodel.utils = {};
 datamodel.utils.displayattributestable=  function(n,o,maxheight){    
             n="Road" + n;
-            var table = "<div style='max-height:" +  (maxheight || 400) +"px;overflow-y:auto;overflow-x:hidden;'><table class='table'>";
+            var table = "<div style='max-height:" +  (maxheight || 400) +"px;overflow-y:auto;overflow-x:hidden;'><table style='font-size:12px;color:#555;' class='table'>";
             var _model =!datamodel.structure[n]?datamodel.structure["road"]:datamodel.structure[n];
             var _getvalue = function(model,o){
                 if(model.ctrl="select" && model.options.length>0 && model.visible){

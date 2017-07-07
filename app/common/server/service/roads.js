@@ -41,8 +41,22 @@ app.get("/api/roads/getcarriagewayperconcount",(req,res)=>{
     roads.getcarriagewayperconcount(req,res);
 });
 
+app.get("/api/roads/getcarriagewayperconlength",(req,res)=>{
+    roads.getcarriagewayperconlength(req,res);
+});
+
+
 app.get("/api/roads/getcarriagewaypersurfacecount",(req,res)=>{
     roads.getcarriagewaypersurfacecount(req,res);
+});
+
+app.get("/api/roads/getcarriagewaypersurfacelength",(req,res)=>{
+    roads.getcarriagewaypersurfacelength(req,res);
+});
+
+
+app.get("/api/roads/getcarriagewaycount",(req,res)=>{
+    roads.getcarriagewaycount(req,res);
 });
 
 

@@ -1,6 +1,11 @@
 angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootScope,$window,$timeout,utilities,datamodel) {
 
 
+    $scope.summary = {};
+    $scope.summary.surfacetype = {};    
+    $scope.summary.surfacecondition = {};
+    $scope.summary.road = {}
+
     //Advance Search
     $scope.pagination = {};
     $scope.pagination.max = 1;
@@ -17,6 +22,11 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
                             'SideWalks','SideFriction','Markings','Junctions','Hazards',
                             'SideSlopes','Signs','Spillways','Causeways','Median'];
     
+
+
+    $scope.summary.roadsummarydisplay =  false;
+    $scope.summary.displaytoggle =  false;
+
     $scope.init =  function(){
         $timeout(function(){
             $("#roadmap").leafletMaps({mutilplebasemap:true});
@@ -73,6 +83,9 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
                 utilities.sort(a.roads,"R_NAME");
             });
         }
+        
+        $scope.summary.roadsummarydisplay =  false;
+        $scope.summary.displaytoggle =  false;
     }
     
     $scope.getcitymunroadshortinfo =  function(a){
@@ -83,6 +96,8 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
                 utilities.sort(a.roads,"R_NAME");
             });
         }
+        $scope.summary.roadsummarydisplay =  false;
+        $scope.summary.displaytoggle =  false;
     }
 
     $scope.getroadattrs =  function(a,cb){        
@@ -286,11 +301,37 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
 
     }
 
+
+
+    $scope.getroadSC_ST =  function(rid){
+        $http.get("/api/roads/getcarriagewaypersurfacelength?qry=" + rid).success(function(d){                    
+          for(var n in d){
+            if(n.indexOf("_id")==-1 && n!="total"){
+                d[n] = utilities.formatToDecimal(d[n].toFixed(3));      
+            }
+          }
+          $scope.summary.surfacetype = d;
+          //console.log($scope.summary.surfacetype);
+        });
+        $http.get("/api/roads/getcarriagewayperconlength?qry=" + rid).success(function(d){
+            for(var n in d){
+                if(n.indexOf("_id")==-1 && n!="total"){
+                    d[n] = utilities.formatToDecimal(d[n].toFixed(3));      
+                }
+            }
+            $scope.summary.surfacecondition = d;            
+        });
+
+
+    };
+
     //*** Search Functionality ****************************************************************
 
     $scope.onclickattr =  function(o,name){
         $("#roadmap").leafletMaps("clear");
-    
+
+        //console.log(name);
+
         var draw_geo =  function(o,name){
             var data =  o.geometry;        
             if(o instanceof Array){
@@ -337,8 +378,8 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
 
                 $("#roadattrttable").html("");
                 var hh = $(".page-content").innerHeight();
-                console.log(name);
-                console.log(o); 
+                //console.log(name);
+                //console.log(o); 
                 //$("#roadattrttable").html(utilities.roads.displayattr(o,hh - 100));                        
                 $("#roadattrttable").html(datamodel.utils.displayattributestable(name,o.attr || o,hh-100));
             }
@@ -353,6 +394,27 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
         }else{
             draw_geo(o,name);
         }
+
+        //from tree 
+        if(o.R_NAME){
+            $scope.getroadSC_ST(o.R_ID);
+            $scope.summary.road.length = utilities.formatToDecimal(o.Length.toFixed(3));
+            $scope.summary.road.class = o.R_CLASS;
+            $scope.summary.road.importance = o.R_Importan;
+            
+            $scope.summary.roadsummarydisplay =  true;
+            $scope.summary.displaytoggle =  true;
+        };
+
+        //from quick searchText
+        if(o.roadlengths){
+            $scope.getroadSC_ST(o._id.R_ID);
+            $scope.summary.road.length = utilities.formatToDecimal(o.roadlengths.toFixed(3));
+            $scope.summary.road.class = o._id.R_CLASS;
+            $scope.summary.road.importance = o._id.R_Importan;
+            $scope.summary.roadsummarydisplay =  true;
+            $scope.summary.displaytoggle =  true;
+        };
                 
         //work around reload current map
         $scope.onmapselect($scope._currentlayer.index);
@@ -380,11 +442,17 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
             _elem.removeClass("fa-plus-square");
             _elem.addClass("fa-minus-square");
             $("#"+ a + _key).slideDown();
+
+            //load road summary
+            if(b.R_ID){$scope.getroadSC_ST(b.R_ID);}
         }else{
             _elem.removeClass("fa-minus-square");
             _elem.addClass("fa-plus-square");
             $("#"+ a + _key).slideUp();
         }
+
+
+        
 
     }
 
