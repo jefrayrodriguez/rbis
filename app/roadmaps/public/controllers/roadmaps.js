@@ -444,7 +444,7 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
             $("#"+ a + _key).slideDown();
 
             //load road summary
-            if(b.R_ID){$scope.getroadSC_ST(b.R_ID);}
+            //if(b.R_ID){$scope.getroadSC_ST(b.R_ID);}
         }else{
             _elem.removeClass("fa-minus-square");
             _elem.addClass("fa-plus-square");
