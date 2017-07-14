@@ -103,15 +103,26 @@
                                                 <td><div class="st-chart-legend" style="background-color:{{colorST('M')}}"></div>&nbsp;Mixed: <font class="percent-value">{{getpercent(summary.surfacetype.Mixed,summary.surfacetype.total)}}</font></td>
                                             </tr>
                                             <tr>
-                                                <td align="right">{{formatToDecimal(summary.surfacetype.Concrete)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacetype.Asphalt)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacetype.Gravel)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacetype.Earth)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacetype.Mixed)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetypeCount.Concrete)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetypeCount.Asphalt)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetypeCount.Gravel)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetypeCount.Earth)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetypeCount.Mixed)}}&nbsp;</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"></td>
-                                                <td align="right">Total:&nbsp; <b>{{ formatToDecimal(summary.surfacetype.total)}}&nbsp;</b></td>
+                                                <td align="right">Total:&nbsp; <b>{{ formatToDecimal(summary.surfacetypeCount.total)}}&nbsp;</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">{{formatToDecimal(summary.surfacetype.Concrete)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetype.Asphalt)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetype.Gravel)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetype.Earth)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacetype.Mixed)}}Km&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"></td>
+                                                <td align="right">Total(Km):&nbsp; <b>{{ formatToDecimal(summary.surfacetype.total)}}&nbsp;</b></td>
                                             </tr>  
                                         </table>
                                         </br>    
@@ -138,20 +149,31 @@
                                                 <td><div class="st-chart-legend" style="background-color:{{colorSC('P')}}"></div>&nbsp;Poor: <font class="percent-value">{{getpercent(summary.surfacecon.Poor,summary.surfacecon.total)}}</font></td>
                                             </tr>
                                             <tr>
-                                                <td align="right">{{formatToDecimal(summary.surfacecon.New)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacecon.Good)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacecon.Fair)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacecon.Bad)}}&nbsp;</td>
-                                                <td align="right">{{formatToDecimal(summary.surfacecon.Fair)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfaceconCount.New)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfaceconCount.Good)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfaceconCount.Fair)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfaceconCount.Bad)}}&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfaceconCount.Poor)}}&nbsp;</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"></td>
-                                                <td align="right">Total:&nbsp; <b>{{ formatToDecimal(summary.surfacecon.total)}}&nbsp;</b></td>
+                                                <td align="right">Total:&nbsp; <b>{{ formatToDecimal(summary.surfaceconCount.total)}}&nbsp;</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">{{formatToDecimal(summary.surfacecon.New)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacecon.Good)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacecon.Fair)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacecon.Bad)}}Km&nbsp;</td>
+                                                <td align="right">{{formatToDecimal(summary.surfacecon.Poor)}}Km&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"></td>
+                                                <td align="right">Total(Km):&nbsp; <b>{{ formatToDecimal(summary.surfacecon.total)}}&nbsp;</b></td>
                                             </tr>  
                                         </table>
                                         </br>
                                         <canvas id="chart_surfacecondition" class="chart chart-doughnut"
-                                            chart-data="summary.chart.sc.data" chart-labels="summary.chart.sc.labels">
+                                            chart-colours="summary.chart.sc.colors" chart-data="summary.chart.sc.data" chart-labels="summary.chart.sc.labels">
                                         </canvas>
                                     </div>
                                 </div>					

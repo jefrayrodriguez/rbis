@@ -10,7 +10,7 @@
                 <a href="/#/roadmaps">Road Maps</a>
             </li>        
         </ul>            
-        <a class="pull-right" style="cursor:pointer;top: 21px;right: 9px;position: relative;color:#fff;" ng-model="roadsummarydisplay" ng-show="summary.displaytoggle" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+        <a class="pull-right" style="cursor:pointer;top: 21px;right: 9px;position: relative;color:#fff;" ng-model="summary.roadsummarydisplay" ng-show="summary.displaytoggle" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
             <font >Hide/Show Road Summary</font>        
         </a>
 </div>   
@@ -163,7 +163,7 @@
         </md-tabs>                    
     </div>    
     <!-- Division-->
-    <div ng-show="roadsummarydisplay">
+    <div ng-show="summary.roadsummarydisplay">
                 <div class="note note-green-dark note-font col-md-3">
                     <table style="width:100%">
                     <tr><td>Road Classification</td><td>{{summary.road.class}}</td></tr>

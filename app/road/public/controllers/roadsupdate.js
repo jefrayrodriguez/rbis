@@ -2,8 +2,8 @@ angular.module('RBIS').controller("roadsupdateCtrl", function( $scope, $http,$ro
     $scope.param = $stateParams;    
     $scope.road = {}
     $scope.roadsummarydisplay = 0;    
-    $scope.currentloadatafields = []
-    $scope.currentloadata = {}
+    $scope.currentloadatafields = [];
+    $scope.currentloadata = {};
 
     $scope.roadsAttr = utilities.roads.attrlabel;
     $scope.roadsAttrKeys = utilities.roads.roadattrkeys;

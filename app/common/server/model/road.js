@@ -28,7 +28,8 @@ const ROAD_ATTR_DET = ["RoadBridges",
                     "RoadSideWalks",
                     "RoadSigns", 
                     "RoadSpillways", 
-                    "RoadStructures"]
+                    "RoadStructures",
+                    "RoadTraffic"]
 
 const ROAD_MODEL_STRUC = {      
     "RegionCode" : String, 
@@ -68,7 +69,8 @@ const ROAD_MODEL_STRUC = {
     "RoadSideWalks" : [Schema.Types.Mixed], 
     "RoadSigns" : [Schema.Types.Mixed], 
     "RoadSpillways" : [Schema.Types.Mixed], 
-    "RoadStructures" : [Schema.Types.Mixed], 
+    "RoadStructures" : [Schema.Types.Mixed],
+    "RoadTraffic": [Schema.Types.Mixed],
     "geometry" : Schema.Types.Mixed
 }
 const RoadsSchema = new Schema(ROAD_MODEL_STRUC,{ collection: 'Roads' });

@@ -79,6 +79,9 @@
                         <li><i class="fa fa-map-marker" aria-hidden="true"></i>
                             <a ng-click="getattrdata('RoadLocRefPoints')" ><font class="tree-branch">|--</font>{{ roadsAttr.RoadLocRefPoints.label }} ({{ road["RoadLocRefPoints_length"] }})</a></li>                        
                             <ul ng-repeat = "key in ['RoadLocRefPoints']" class="roads-tree-attr-child" ng-include="'roadsattribute'"></ul>
+                       <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <a ng-click="getattrdata('RoadTraffic')" ><font class="tree-branch">|--</font>{{ roadsAttr.RoadTraffic.label }} ({{ road["RoadTraffic_length"] }})</a></li>                        
+                            <ul ng-repeat = "key in ['RoadTraffic']" class="roads-tree-attr-child" ng-include="'roadsattribute'"></ul>     
                     </ul>                       
                 </ul>
                 </md-content>
@@ -276,6 +279,7 @@
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCulverts'" ng-include="'template_RoadCulverts'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadDitches'" ng-include="'template_RoadDitches'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSpillways'" ng-include="'template_RoadSpillways'"></div>
+                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSpillways'" ng-include="'template_RoadTraffic'"></div>
            </div>   
          </div>
            <div class="col-md-5 no-padding">

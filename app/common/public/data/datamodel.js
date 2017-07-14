@@ -1,13 +1,12 @@
 'use strict';
 
-angular.module('RBIS').service('datamodel', ['$window','$rootScope','utilities',function ($window, $rootScope,utilities) {
+angular.module('RBIS').factory('datamodel', ['$window','$rootScope','utilities',function ($window, $rootScope,utilities) {
 
 var datamodel = {};
 
 /*  Options */
 datamodel.options = {};
 datamodel.options.importance = [{"key":"Core","label":"CORE"},{"key":"Non-Core","label":"NON-CORE"}];
-datamodel.options.class = [{"key":"City","label":"City"},{"key":"Provincial","label":"Provincial"}];
 datamodel.options.environment = [{"key":"U","label":"URBAN (METROPOLITAN)"},{"key":"N","label":"URBAN (NON-METROPOLITAN)"},{"key":"R","label":"RURAL"}];
 datamodel.options.directionflow = [{"key":"One-Way","label":"ONE-WAY"},{"key":"Two-Way","label":"TWO-WAY"}];
 datamodel.options.terrain = [{"key":"F","label":"FLAT"},{"key":"R","label":"ROLLING"},{"key":"M","label":"MOUNTAINOUS"}];
@@ -212,6 +211,24 @@ datamodel.options.culvertslope = [
 	{key:"T", label:"TIMBER"},
 	{key:"O", label:"OTHERS"}
 ];
+
+//Traffic vehicle type
+
+datamodel.options.culvertslope = [
+	{key:"P", label:"MOTOR-TRICYCLE"},
+	{key:"S", label:"PASSENGER CAR"},
+	{key:"R", label:"PASSENGER UTILITY"},
+	{key:"M", label:"GOODS UTILITY"},
+	{key:"T", label:"SMALL BUS"},
+	{key:"O", label:"LARGE BUS"},
+    {key:"P", label:"RIGID TRUCK 2 AXLES"},
+	{key:"S", label:"RIGID TRUCK 3+ AXLES"},
+	{key:"R", label:"TRUCK SEMI-TRAILER 3 AND 4 AXLES"},
+	{key:"M", label:"TRUCK SEMI-TRAILER 5+ AXELS"},
+	{key:"T", label:"TRUCK TRAILER 4 AXLES"},
+	{key:"O", label:"TRUCK TRAILER 5+ AXLES"}
+];
+
 	
 //road
 datamodel.road = {
@@ -220,7 +237,7 @@ datamodel.road = {
     "CityMunCod"        : {"label":"City Code","key":"CityMunCod","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
     "R_ID"              : {"label":"Road ID","key":"R_ID","type":"string","options":[],"visible":true,"style":"","ctrl":"label","class":"form-control"}, 
     "R_NAME"            : {"label":"Name","key":"R_NAME","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
-    "R_CLASS"           : {"label":"Class","key":"R_CLASS","type":"string","options":datamodel.options.class,"visible":true,"style":"","ctrl":"select","class":"form-control"}, 
+    "R_CLASS"           : {"label":"Class","key":"R_CLASS","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
     "R_Importan"        : {"label":"Importance","key":"R_Importan","type":"string","options":datamodel.options.importance,"visible":true,"style":"","ctrl":"select","class":"form-control"}, 
     "Environmen"        : {"label":"Environment","key":"Environmen","type":"string","options":datamodel.options.environment,"visible":true,"style":"","ctrl":"select","class":"form-control"}, 
     "RROW"              : {"label":"RROW","key":"RROW","type":"float","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
@@ -267,7 +284,7 @@ datamodel.RoadBridges = {
             "R_ID"          :{"label":"Road ID","key":"R_ID","type":"string","options":[],"visible":true,"style":"","ctrl":"label","class":"form-control"}, 
             "R_NAME"        : {"label":"Road Name","key":"R_NAME","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
             "Name"          :{"label":"Name","key":"Name","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
-            "Length"        :{"label":"Length(Km)","key":"Length","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
+            "Length"        :{"label":"Length(m)","key":"Length","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
             "TypeID"        :{"label":"Type Id","key":"TypeID","type":"String","options":datamodel.options.superstructuretype,"style":"","ctrl":"select","class":"form-control"}, 
             "LRPStartKm"    :{"label":"Km Post Start","key":"LRPStartKm","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
             "LRPStartDi"    :{"label":"","key":"LRPStartDi","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
@@ -563,6 +580,22 @@ datamodel.RoadSpillways = {
     "Length" : {"label":"Length(m)","key":"length","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}        
 };
 
+ //Traffic
+datamodel.RoadTraffic = {
+    "R_ID"         : {"label":"Road ID","key":"R_ID","type":"string","options":[],"visible":true,"style":"","ctrl":"label","class":"form-control"},   
+    "LRPStartKm"   : {"label":"Start(Km)","key":"LRPStartKm","type":"string","options":[],"visible":true,"style":"","ctrl":"select","class":"form-control"},
+    "LRPStartDi"   : {"label":"","key":"LRPStartDi","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
+    "LRPEndKmPo"   : {"label":"End(Km)","key":"LRPEndKmPo","type":"string","options":[],"visible":true,"style":"","ctrl":"select","class":"form-control"},
+    "LRPEndDisp"   : {"label":"","key":"LRPEndDisp","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},        
+    "Cost"         : {"label":"Cost","key":"Cost","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
+    "Usefullife"   : {"label":"Useful Life","key":"Usefullife","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
+    "VehicleType"  : {"label":"Vehicle Type","key":"VehicleType","type":"string","options":datamodel.options.vehicletype,"visible":true,"style":"","ctrl":"select","class":"form-control"},        
+    "Date"         : {"label":"Date","key":"Date","type":"string","options":[],"visible":true,"style":"","ctrl":"date","class":"form-control"},
+    "From"         : {"label":"From","key":"From","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
+    "To"           : {"label":"To","key":"To","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},  
+    "FromDi"       : {"label":"","key":"FromDi","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
+    "ToDi"         : {"label":"","key":"ToDi","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}        
+};
 
 
 
@@ -596,9 +629,10 @@ datamodel.structure = {
 
 
 datamodel.utils = {};
+
 datamodel.utils.displayattributestable=  function(n,o,maxheight){    
             n="Road" + n;
-            var table = "<div style='max-height:" +  (maxheight || 400) +"px;overflow-y:auto;overflow-x:hidden;'><table style='font-size:12px;color:#555;' class='table'>";
+            var table = "<div style='max-height:" +  (maxheight || 400) +"px;overflow-y:auto;overflow-x:hidden;'><table style='color:#555;font-size:12px;' class='table'>";
             var _model =!datamodel.structure[n]?datamodel.structure["road"]:datamodel.structure[n];
             var _getvalue = function(model,o){
                 if(model.ctrl="select" && model.options.length>0 && model.visible){
@@ -618,7 +652,6 @@ datamodel.utils.displayattributestable=  function(n,o,maxheight){
             table+="</table></div>"
             return table;
     }; 
-
 
 
 
