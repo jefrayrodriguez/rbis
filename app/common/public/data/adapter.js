@@ -37,6 +37,13 @@ adapter.processdata =  function(a,b,c){
     //console.log(adapter.data);
 }
 
+var _crud = {};
+
+_crud.send =  function(data){
+
+}
+
+
 
 
 adapter.save = function(k){

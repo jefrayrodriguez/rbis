@@ -2,13 +2,13 @@
 <script type="text/ng-template" id="roadfieldcontrol">
 
     <label ng-if="currentModel.struct[field].ctrl=='label'">{{ currentModel.currentItem[field] }}</label>
-    <input type="text" ng-if="currentModel.struct[field].ctrl=='text'"  ng-model="currentModel.currentItem[field]" class="{{currentModel.struct[field].class}}"></input>
-    <select ng-if="currentModel.struct[field].ctrl=='select'" ng-model="currentModel.currentItem[field]" class="{{currentModel.struct[field].class}}">
+    <input ng-blur="ondatadirty(currentModel,field,currentModel.currentItem[field])" type="text" ng-if="currentModel.struct[field].ctrl=='text'"  ng-model="currentModel.currentItem[field]" class="{{currentModel.struct[field].class}}"></input>
+    <select ng-blur="ondatadirty(currentModel,field,currentModel.currentItem[field])" ng-if="currentModel.struct[field].ctrl=='select'" ng-model="currentModel.currentItem[field]" class="{{currentModel.struct[field].class}}">
         <option value="{{opt.key}}"  ng-selected="currentModel.currentItem[field]==opt.key" ng-repeat="opt in currentModel.struct[field].options">{{ opt.label }}</option>
     </select>                                   
     <div layout-gt-xs="row" ng-if="currentModel.struct[field].ctrl=='date'">
         <div flex-gt-xs>                                    
-        <md-datepicker ng-model="currentModel.currentItem[field]" md-placeholder="Enter date"></md-datepicker>
+        <md-datepicker ng-blur="ondatadirty(currentModel,field,currentModel.currentItem[field])" ng-model="currentModel.currentItem[field]" md-placeholder="Enter date"></md-datepicker>
         </div>
     </div>
 </script>
