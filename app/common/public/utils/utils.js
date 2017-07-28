@@ -302,7 +302,8 @@ PlaceNames
                                 "RoadSideWalks":{label:"Sidewalks",group:utilities.roads.groups.RSF.key},
                                 "RoadSigns":{label:"Signs",group:utilities.roads.groups.SFA.key},
                                 "RoadSpillways":{label:"Spillways",group:utilities.roads.groups.D.key},
-                                "RoadStructures":{label:"Structures"},group:utilities.roads.groups.RSF.key};
+                                "RoadStructures":{label:"Structures"},group:utilities.roads.groups.RSF.key,
+                                "RoadTraffic":{label:"Traffic"},group:""};
                                 
 
     utilities.roads.pavement={"AMGB" :{code:"AMGB", text:"Asphalt Mix on Granular Base",color:""},
@@ -331,7 +332,13 @@ PlaceNames
                         "M": {text:"MIXED",color:"#357c31"}
                     };
 
-                  
+    utilities.roads.SC={                        
+                        "N": {text:"NEW",color:"#e809c2"},
+                        "G": {text:"GOOD",color:"#10e809"},
+                        "F": {text:"FAIR",color:"#5492f7"},
+                        "B": {text:"BAD",color:"#f2811f"},
+                        "P": {text:"POOR",color:"#b70303"}
+                    };                  
     
     utilities.roads.STStyle = function(k){
         return {style: function(f){

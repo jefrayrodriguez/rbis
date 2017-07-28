@@ -2,8 +2,8 @@ angular.module('RBIS').controller("roadsupdateCtrl", function( $scope, $http,$ro
     $scope.param = $stateParams;    
     $scope.road = {}
     $scope.roadsummarydisplay = 0;    
-    $scope.currentloadatafields = []
-    $scope.currentloadata = {}
+    $scope.currentloadatafields = [];
+    $scope.currentloadata = {};
 
     $scope.roadsAttr = utilities.roads.attrlabel;
     $scope.roadsAttrKeys = utilities.roads.roadattrkeys;
@@ -54,7 +54,7 @@ $scope.init =  function(){
                     $scope.road = data;             
                     $scope.currentModel.roadID = data.R_ID;
                     adapter.init(data.R_ID);              
-                    $scope.loadAttrAsOptions("RoadLocRefPoints",["RoadCarriageway",]);              
+                    $scope.loadAttrAsOptions("RoadLocRefPoints");              
                     $scope.loadRoadMainData();
                     
             });
@@ -70,12 +70,12 @@ $scope.loadAttrAsOptions =  function(attr,toattr,cb){
         $http.get("/api/roads/getroadattr?rid=" + $scope.road.R_ID + "&attr=" + attr).success(function(data){
            // if(toattr=="RoadCarriageway"){
                 for(var n in datamodel.structure){
-                    if(n!="road" || n!="RoadLocRefPoints"){
-                        datamodel.structure[toattr]["LRPStartKm"].options = [];                                            
-                        datamodel.structure[toattr]["LRPEndKmPo"].options = [];
+                    if(n!="road" && n!="RoadLocRefPoints"){
+                        datamodel.structure[n]["LRPStartKm"].options = [];                                            
+                        datamodel.structure[n]["LRPEndKmPo"].options = [];
                         data.forEach(function(d){                            
-                                datamodel.structure[toattr]["LRPStartKm"].options.push({key:d.KMPostNo,label:d.KMPostNo});
-                                datamodel.structure[toattr]["LRPEndKmPo"].options.push({key:d.KMPostNo,label:d.KMPostNo});                            
+                                datamodel.structure[n]["LRPStartKm"].options.push({key:d.KMPostNo,label:d.KMPostNo});
+                                datamodel.structure[n]["LRPEndKmPo"].options.push({key:d.KMPostNo,label:d.KMPostNo});                            
                         });      
                     }
                 }
@@ -158,11 +158,20 @@ $scope.ondatadirty =  function(a,b,c){
 
 
 $scope.toolbarAction = function(a,e){
-    console.log(a);
+    var _oncomplete =  function(d){
+        d.forEach(function(a){
+            toastr.success("Saved " + a.table + " | Field Count:" + a.count);
+            adapter.clear(a.table);                      
+        });
+
+
+        
+    };
+
     var action = {save:function(){
-                    adapter.save($scope.currentModel);
+                    adapter.save($scope.currentModel,_oncomplete);
                 },saveall:function(){
-                    adapter.save();
+                    adapter.save(null,_oncomplete);
                 }
         };
 

@@ -79,6 +79,9 @@
                         <li><i class="fa fa-map-marker" aria-hidden="true"></i>
                             <a ng-click="getattrdata('RoadLocRefPoints')" ><font class="tree-branch">|--</font>{{ roadsAttr.RoadLocRefPoints.label }} ({{ road["RoadLocRefPoints_length"] }})</a></li>                        
                             <ul ng-repeat = "key in ['RoadLocRefPoints']" class="roads-tree-attr-child" ng-include="'roadsattribute'"></ul>
+                       <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <a ng-click="getattrdata('RoadTraffic')" ><font class="tree-branch">|--</font>{{ roadsAttr.RoadTraffic.label }} ({{ road["RoadTraffic_length"] }})</a></li>                        
+                            <ul ng-repeat = "key in ['RoadTraffic']" class="roads-tree-attr-child" ng-include="'roadsattribute'"></ul>     
                     </ul>                       
                 </ul>
                 </md-content>
@@ -260,6 +263,7 @@
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCarriageway'" ng-include="'template_RoadCarriageway'"></div>                    
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadBridges'" ng-include="'template_RoadBridges'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSideFriction'" ng-include="'template_RoadSideFriction'"></div>
+                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadLocRefPoints'" ng-include="'template_RoadLocRefPoints'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadPlaceNames'" ng-include="'template_RoadPlaceNames'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadJunctions'" ng-include="'template_RoadJunctions'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadMedian'" ng-include="'template_RoadMedian'"></div>
@@ -276,6 +280,7 @@
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadCulverts'" ng-include="'template_RoadCulverts'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadDitches'" ng-include="'template_RoadDitches'"></div>
                     <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSpillways'" ng-include="'template_RoadSpillways'"></div>
+                    <div  ng-if="currentModel.name!='road' && currentModel.currentItem!=null && currentModel.name=='RoadSpillways'" ng-include="'template_RoadTraffic'"></div>
            </div>   
          </div>
            <div class="col-md-5 no-padding">

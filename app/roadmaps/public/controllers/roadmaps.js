@@ -398,11 +398,12 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
         //from tree 
         if(o.R_NAME){
             $scope.getroadSC_ST(o.R_ID);
-            $scope.summary.road.length = utilities.formatToDecimal(o.Length.toFixed(3));
+            console.log(o);
+            $scope.summary.road.length = utilities.formatToDecimal(parseFloat("0" + o.Length).toFixed(3));
             $scope.summary.road.class = o.R_CLASS;
             $scope.summary.road.importance = o.R_Importan;
             
-            $scope.summary.roadsummarydisplay =  true;
+            //$scope.summary.roadsummarydisplay =  true;
             $scope.summary.displaytoggle =  true;
         };
 
@@ -412,10 +413,11 @@ angular.module('RBIS').controller("roadmapsCtrl", function( $scope, $http,$rootS
             $scope.summary.road.length = utilities.formatToDecimal(o.roadlengths.toFixed(3));
             $scope.summary.road.class = o._id.R_CLASS;
             $scope.summary.road.importance = o._id.R_Importan;
-            $scope.summary.roadsummarydisplay =  true;
+            //$scope.summary.roadsummarydisplay =  true;
             $scope.summary.displaytoggle =  true;
         };
                 
+                console.log($scope.summary.roadsummarydisplay);
         //work around reload current map
         $scope.onmapselect($scope._currentlayer.index);
         

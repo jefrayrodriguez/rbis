@@ -59,5 +59,8 @@ app.get("/api/roads/getcarriagewaycount",(req,res)=>{
     roads.getcarriagewaycount(req,res);
 });
 
+app.post("/api/roads/saveroad",(req,res)=>{
+    roads.saveroad(req,res);
+});
 
 }
