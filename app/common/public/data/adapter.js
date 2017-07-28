@@ -44,17 +44,38 @@ _crud.send =  function(data){
 }
 
 
+adapter.clear =  function(b){
+if(b){
+        for(var i=0;adapter.data.length;i++){
+                var r = adapter.data[i];
+                    if(r.table==b){adapter.data.splice(i,1);}    
+        };
+}else{
+        adapter.data = [];
+        adapter.roadID = "";
+}
+        
+};
 
-
-adapter.save = function(k){
-    console.log(adapter.roadID);
+adapter.save = function(k,cb){
+var _bodydata = {};
+_bodydata.R_ID=adapter.roadID;
+_bodydata.data = adapter.data
+console.log(k);
  if(k && k.name!='road'){
         var dx = adapter.data.map(function(d){return d.table}).indexOf(k.name);
         var row =  adapter.data[dx];
         console.log(row);
+        _bodydata.data = [row];
  }else{
         console.log(adapter.data);
  }
+
+
+ $http.post("/api/roads/saveroad",{roaddata:_bodydata}).success(function(data){
+         if(cb) cb(data);
+ })
+
 };
 
 

@@ -398,5 +398,73 @@ RoadsSchema.statics.getcarriagewaycount =  function(qry,cb){
 };
 
 
+var _validateData =  function(data,cb){
+    if(!data.R_ID){
+        cb(false);
+    }
+    cb(true);
+};
+
+RoadsSchema.statics.save =  function(objdata,cb){
+    var road = this;
+    var _dataOnComplete = [];
+        
+    _validateData(objdata,function(b){
+        //console.log(JSON.stringify(objdata));
+        if(b){
+            road.findOne({"R_ID":objdata.R_ID}).exec(function(err,doc){                    
+                    var _pp = {};
+
+                    for(var i=0;i<objdata.data.length;i++){
+                          var _row = objdata.data[i];
+                            if(_row.table=="road"){
+                                _row.rows.forEach(function(d){
+                                        doc[d.key] = d.value;                                            
+                                });
+
+                                var _pdx = _dataOnComplete.map(function(d){return d.table}).indexOf("Road");
+                                if(_pdx>-1){
+                                    _dataOnComplete[_pdx].count+=1;     
+                                }else{
+                                    _dataOnComplete.push({"table":"road",count:1});
+                                }
+
+
+                            }else{
+                                var features = doc[_row.table];
+                                _row.rows.forEach(function(d){                                                                                
+                                    var fdx = doc[_row.table].map(function(c){return c._id.toString()}).indexOf(d.id);                                                                                
+                                        if(fdx>-1){                                                
+                                            doc[_row.table][fdx][d.key] = d.value;                                                
+                                            console.log(d.key + " : " +doc[_row.table][fdx][d.key]);    
+                                        };
+
+                                        var _pdx = _dataOnComplete.map(function(d){return d.table}).indexOf(_row.table);
+                                        if(_pdx>-1){
+                                            _dataOnComplete[_pdx].count+=1;     
+                                        }else{
+                                            _dataOnComplete.push({"table":_row.table,count:1});
+                                        }                                                                                    
+                                });                                    
+                                doc.markModified(_row.table);
+                            }
+
+                            
+                    };
+                    
+                    doc.save(function(err){
+                        cb(err,_dataOnComplete);
+                    }) //findone
+            }); //validate       
+        }//end if
+    });
+    
+
+
+};
+
+
+
+
 RoadsSchema.plugin(mongooseAggregatePaginate);
 mongoose.model('Roads', RoadsSchema);

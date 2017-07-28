@@ -133,6 +133,15 @@ exports.getcarriagewaycount = (req,res)=>{
     });
 }
 
+exports.saveroad = (req,res)=>{
+    var roads = mongoose.model("Roads");
+    var data = req.body.roaddata;    
+    roads.save(data,function(err,data){
+        if(err){res.status(500).json(err);return;};
+        res.status(200).json(data);
+    });
+}
+
 
 
 

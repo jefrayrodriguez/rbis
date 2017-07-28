@@ -344,7 +344,7 @@ datamodel.RoadBridges = {
 //Road KM Post
 datamodel.RoadLocRefPoints = {
         "R_ID"      : {"label":"Road ID","key":"R_ID","type":"string","options":[],"visible":true,"style":"","ctrl":"label","class":"form-control"},
-        "KMPostNo"  : {"label":"KM Post No.","key":"KMPostNo","type":"String","options":[],"visible":true,"style":"","ctrl":"select","class":"form-control"}, 
+        "KMPostNo"  : {"label":"KM Post No.","key":"KMPostNo","type":"String","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"}, 
         "LAT"       : {"label":"Latitude","key":"Lat","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
         "LONG"      : {"label":"Longitude","key":"LONG","type":"string","options":[],"visible":true,"style":"","ctrl":"text","class":"form-control"},
 }
@@ -620,7 +620,8 @@ datamodel.structure = {
                         "RoadSideWalks":datamodel.RoadSideWalks,
                         "RoadSigns":datamodel.RoadSigns,
                         "RoadSpillways":datamodel.RoadSpillways,
-                        "RoadStructures":datamodel.RoadStructures
+                        "RoadStructures":datamodel.RoadStructures,
+                        "RoadTraffic":datamodel.RoadTraffic
                         }                                
 
 
