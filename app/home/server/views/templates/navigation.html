@@ -19,7 +19,31 @@
                 <li ng-class="{'start active open':$state.current.url=='reports'}"><a ui-sref="home.reports"><i class="fa fa-bar-chart-o"></i><span class="title">Reports</span><span class="arrow "></span></a></li>
                 <li ng-class="{'start active open':$state.current.url=='roadmaps'}"><a ui-sref="home.roadmaps"><i class="fa fa-map-marker"></i><span class="title">Road Maps</span><span class="arrow "></span></a></li>                
                 <li ng-class="{'start active open':$state.current.url=='geotags'}"><a ui-sref="home.geotags"><i class="fa fa-bookmark-o"></i><span class="title">GeoTags</span><span class="arrow "></span></a></li>
-				<li><a><i class="fa fa-cogs"></i><span class="title">Administration</span><span class="arrow "></span></a></li>				
+				<!--<li><a><i class="fa fa-cogs"></i><span class="title">Administration</span><span class="arrow "></span></a></li>-->				
+				<li class="nav-item">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="fa fa-cogs"></i>
+                                    <span class="title">Administration</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: block;">
+                                    <li ng-class="{'start active open':$state.current.url=='userlist'}" class="nav-item">
+                                        <a ui-sref="home.userlist" class="nav-link ">
+                                            <span class="title">User List</span>
+                                        </a>
+									</li>
+									<li class="nav-item  ">
+                                        <a ui-sref="home.profile" class="nav-link ">
+                                            <span class="title">My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a ui-sref="home.preference" class="nav-link ">
+                                            <span class="title">Preference</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                </li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 	</div>

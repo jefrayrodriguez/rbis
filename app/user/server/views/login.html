@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>Login | Philippines Provincial Road  Management Facility </title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/plugins/bootstrap/css/docs.min.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="/common/assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/admin/pages/css/login.css" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME STYLES -->
+<link href="/common/assets/global/css/components.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="/common/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css"/>
+<link href="/common/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="/common/assets/frontend/pages/img/favicon.ico"/>
+
+<!-- Angular -->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/user/controllers/login.js"></script>
+
+<!-- Mainly scripts -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="login" ng-app="LoginModule" ng-controller="LoginController">
+	<div class="img-bg blur"></div>
+	<!-- BEGIN LOGO -->
+	<div class="logo">
+	 	<img src="/common/assets/frontend/pages/img/logo_rbis.png" alt="rbis-logo" class="logo-default">&nbsp;
+		<span class="logo-name">Road and Bridge Information System</span>
+	</div>
+	<!-- END LOGO -->
+	<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+	<div class="menu-toggler sidebar-toggler">
+	</div>
+	<!-- END SIDEBAR TOGGLER BUTTON -->
+	<!-- BEGIN LOGIN -->
+	<div class="content" style="height:320px;">
+		<!-- BEGIN LOGIN FORM -->
+	  <a class="center-logo" href="#">
+	  	<div class="half-circle"></div>
+	    <img alt="dilg-seal-logo" src="/common/assets/frontend/pages/img/180px-LOGO.png" style="width: 95px; height: 95px;" />
+      </a>
+		<div class="alert alert-danger animated fadeIn" ng-show="loginError.length>0">{{loginError}}</div>
+        <form style="position: relative;top: -84px;" class="m-t" role="form" ng-submit="login()">
+           <h3 class="form-title">Welcome! Please Login.</h3>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Username</label>
+				<div class="input-icon">
+					<i class="fa fa-user"></i>
+                    <input type="email" class="form-control" ng-model="user.email" placeholder="Email" required="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+				<div class="input-icon">
+					<i class="fa fa-lock"></i>
+                    <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required="">
+                </div>
+            </div>
+            <div class="form-actions">				
+                <button type="submit" class="btn btn-primary block full-width m-b blue pull-right">Login<i class="m-icon-swapright m-icon-white"></i></button>
+			</div>                  
+        </form>
+		<!-- END LOGIN FORM -->
+	</div>
+	<div class="bs-docs-header" id="content">
+	  <div class="media">
+	  	<div class="col-md-12">	
+	  		<div class="col-md-5">
+			    <a class="media-left" href="#">
+			      <img alt="australian-aid-logo" src="/common/assets/frontend/pages/img/ausaidlogo.png" style="width: 78px;" />
+			    </a>
+			    <div class="media-body">
+			      <h4 class="media-heading">Philippines Provincial Road  Management Facility</h4>
+			  		<p>Supported by the Australian Government Aid Program</p>
+			    </div>
+	    	</div>
+	    	<div class="col-md-7">
+	    		<div class="media-body">
+			      <!-- BEGIN COPYRIGHT -->
+						<div class="copyright">
+							 The Provincial Road Management Facility is an initiative of the Australian Government, Department of Foreign Affairs and Trade-Australian Aid. <br/>
+							 Copyright 2014 &copy; Philippine Provincial Road Management Facility.
+						</div>
+						<!-- END COPYRIGHT -->
+			    </div>
+	    	</div>
+	    </div>
+	  </div>
+	</div>    
+	<!-- END JAVASCRIPTS -->
+	</body>
+	<!-- END BODY -->
+</html>

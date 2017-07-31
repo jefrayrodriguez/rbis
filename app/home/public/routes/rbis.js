@@ -124,6 +124,24 @@
                                   url: 'geotags',
                                   templateUrl: '/geotags/views/geotags.html',
                                   data : { pageTitle: 'Geotags | Road and Bridge Information System' }
+                              })
+                              .state('home.userlist', {
+                                  url: 'userlist',
+                                  controller: 'userlistCtrl',
+                                  templateUrl: '/user/views/userlist.html',
+                                  data : { pageTitle: 'User Management | Road and Bridge Information System' },
+                                  resolve:{                                            
+                                            loadfile: function ($ocLazyLoad) {
+                                                return $ocLazyLoad.load([
+                                                    {
+                                                        cache:true,
+                                                        files: ['/user/assets/css/user.css',
+                                                                '/user/controllers/userlist.js'                                                                
+                                                                ]
+                                                    }                                                    
+                                                ]);
+                                            }                                      
+                                  }  
                               })                             
 
          }])
