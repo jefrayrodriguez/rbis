@@ -27,19 +27,19 @@
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="sub-menu" style="display: block;">
-                                    <li ng-class="{'start active open':$state.current.url=='userlist'}" class="nav-item">
-                                        <a ui-sref="home.userlist" class="nav-link ">
+									<li ng-class="{'start active open':$state.current.url=='/newuser'}" class="nav-item">
+                                        <a ui-sref="user.newuser" class="nav-link ">
+                                            <span class="title">Create User</span>
+                                        </a>
+									</li>
+									<li ng-class="{'start active open':$state.current.url=='/userlist'}" class="nav-item">
+                                        <a ui-sref="user.userlist" class="nav-link ">
                                             <span class="title">User List</span>
                                         </a>
 									</li>
-									<li class="nav-item  ">
-                                        <a ui-sref="home.profile" class="nav-link ">
+									<li ng-class="{'start active open':$state.current.url=='/myprofile'}" class="nav-item">
+                                        <a ui-sref="user.myprofile" class="nav-link ">
                                             <span class="title">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item  ">
-                                        <a ui-sref="home.preference" class="nav-link ">
-                                            <span class="title">Preference</span>
                                         </a>
                                     </li>
                                 </ul>
