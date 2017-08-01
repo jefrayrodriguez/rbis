@@ -124,6 +124,65 @@
                                   url: 'geotags',
                                   templateUrl: '/geotags/views/geotags.html',
                                   data : { pageTitle: 'Geotags | Road and Bridge Information System' }
+                              })
+                              .state('user', {
+                                 abstract:true,
+                                  url: '/user',
+                                  templateUrl: '/user/views/index.html'
+                              })
+                              .state('user.userlist', {
+                                  url: '/userlist',
+                                  controller: 'userlistCtrl',
+                                  templateUrl: '/user/views/userlist.html',
+                                  data : { pageTitle: 'User Management | Road and Bridge Information System' },
+                                  resolve:{                                            
+                                            loadfile: function ($ocLazyLoad) {
+                                                return $ocLazyLoad.load([
+                                                    {
+                                                        cache:true,
+                                                        files: ['/user/assets/css/user.css',
+                                                                '/user/controllers/userlist.js'                                                                
+                                                                ]
+                                                    }                                                    
+                                                ]);
+                                            }                                      
+                                  }  
+                              })
+                               .state('user.newuser', {
+                                  url: '/newuser',
+                                  controller: 'newuserCtrl',
+                                  templateUrl: '/user/views/newuser.html',
+                                  data : { pageTitle: 'My Profile | Road and Bridge Information System' },
+                                  resolve:{                                            
+                                            loadfile: function ($ocLazyLoad) {
+                                                return $ocLazyLoad.load([
+                                                    {
+                                                        cache:true,
+                                                        files: ['/user/assets/css/user.css',
+                                                                '/user/controllers/newuser.js'                                                                
+                                                                ]
+                                                    }                                                    
+                                                ]);
+                                            }                                      
+                                  }  
+                              })
+                              .state('user.myprofile', {
+                                  url: '/myprofile',
+                                  controller: 'myprofileCtrl',
+                                  templateUrl: '/user/views/myprofile.html',
+                                  data : { pageTitle: 'My Profile | Road and Bridge Information System' },
+                                  resolve:{                                            
+                                            loadfile: function ($ocLazyLoad) {
+                                                return $ocLazyLoad.load([
+                                                    {
+                                                        cache:true,
+                                                        files: ['/user/assets/css/user.css',
+                                                                '/user/controllers/myprofile.js'                                                                
+                                                                ]
+                                                    }                                                    
+                                                ]);
+                                            }                                      
+                                  }  
                               })                             
 
          }])
